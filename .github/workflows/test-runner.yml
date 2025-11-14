@@ -8,4 +8,5 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Print message
-        run: echo "Runner funguje!"
+        shell: cmd
+        run: echo Runner funguje!
