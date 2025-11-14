@@ -1,0 +1,29 @@
+name: Deploy to SFTP
+
+on:
+  push:
+    branches:
+      - main   # deploy bude po pushi do 'main'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload files via SFTP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USER }}
+          password: ${{ secrets.SFTP_PASS }}
+          port: ${{ secrets.SFTP_PORT }}
+
+          # sem GitHub nahrá tvoju stránku
+          target: /public_html/
+
+          # čo sa uploaduje – celý projekt
+          source: ./*
+          overwrite: true
