@@ -1,29 +1,15 @@
-name: Deploy to SFTP
+- name: Checkout
+  uses: actions/checkout@v4
 
-on:
-  push:
-    branches:
-      - main   # deploy bude po pushi do 'main'
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Upload files via SFTP
-        uses: Dylan700/sftp-upload-action@latest
-        with:
-        host: ${{ secrets.SFTP_HOST }}
-username: ${{ secrets.SFTP_USER }}
-password: ${{ secrets.SFTP_PASS }}
-port: ${{ secrets.SFTP_PORT }}
-
-          # sem GitHub nahrá tvoju stránku
-          target: /public_html/
-
-          # čo sa uploaduje – celý projekt
-          source: ./*
-          overwrite: true
+- name: SFTP upload
+  uses: Dylan700/sftp-upload-action@latest
+  with:
+    server: ${{ secrets.SFTP_HOST }}
+    username: ${{ secrets.SFTP_USER }}
+    password: ${{ secrets.SFTP_PASS }}
+    port: ${{ secrets.SFTP_PORT }}
+    uploads: |
+      ./ => /public_html/
+    ignore: |
+      .git
+      **/*git*
