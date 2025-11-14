@@ -20,7 +20,7 @@ jobs:
             /log="%CD%\deploy.log" ^
             /command ^
             "open AlfaDesk-Hosting" ^
-            "lcd %CD%" ^
+            "lcd ""%CD%""" ^
             "cd /public_html/" ^
             "synchronize remote . ." ^
             "exit"
