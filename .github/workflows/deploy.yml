@@ -14,12 +14,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy via WinSCP
-  shell: cmd
-  run: |
-    "C:\Program Files (x86)\WinSCP\WinSCP.com" ^
-    /log="%CD%\deploy.log" ^
-    /command ^
-    "cd /public_html/" ^
-    "lcd %CD%\_work\AlfaDesk-web\AlfaDesk-web" ^
-    "synchronize remote -delete" ^
-    "exit"
+        shell: cmd
+        run: |
+          "C:\Program Files (x86)\WinSCP\WinSCP.com" ^
+            /log="%CD%\deploy.log" ^
+            /command ^
+            "open AlfaDesk-Hosting" ^
+            "lcd ""%CD%""" ^
+            "cd /public_html/" ^
+            "synchronize remote . . -filemask=""|.git/;.github/;deploy.log""" ^
+            "exit"
