@@ -1,7 +1,7 @@
-- name: Checkout
+name: Checkout
   uses: actions/checkout@v4
 
-- name: SFTP upload
+name: SFTP upload
   uses: Dylan700/sftp-upload-action@latest
   with:
     server: ${{ secrets.SFTP_HOST }}
