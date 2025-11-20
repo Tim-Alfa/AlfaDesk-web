@@ -1,0 +1,26 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy via WinSCP
+        shell: cmd
+        run: |
+          "C:\Program Files (x86)\WinSCP\WinSCP.com" ^
+            /log="%CD%\deploy.log" ^
+            /command ^
+            "open AlfaDesk-Hosting" ^
+            "lcd ""%CD%""" ^
+            "cd /public_html/" ^
+            "synchronize remote . . -filemask=""|.git/;.github/;deploy.log""" ^
+            "exit"

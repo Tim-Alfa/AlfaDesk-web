@@ -1,0 +1,12 @@
+name: Test self-hosted runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - name: Print message
+        shell: cmd
+        run: echo Runner funguje!

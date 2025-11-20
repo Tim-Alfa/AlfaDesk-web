@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Popis stránok – AlfaDesk</title>
+  <link rel="stylesheet" href="style/style.css">
+  <style>
+    .wrap{max-width:1100px;margin:0 auto;padding:1rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    .card{background:var(--card);border-radius:14px;box-shadow:0 10px 20px rgba(0,0,0,.06);overflow:hidden}
+    .card img{width:100%;height:180px;object-fit:cover;display:block}
+    .card .body{padding:1rem}
+    .card h3{margin:.2rem 0;color:var(--blue-800)}
+    .card p{margin:.4rem 0 .6rem;color:#2a3c63}
+    .card .meta{font-size:.9rem;color:#5b6c8f}
+    .topbar a.brand h1{font-size:1.2rem}
+    .anchor{scroll-margin-top:80px}
+    table.routes{width:100%;border-collapse:collapse;margin-top:1rem}
+    .routes th,.routes td{border:1px solid #e6ecff;padding:.6rem .7rem;text-align:left}
+    .routes th{background:#eef5ff}
+  
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="ALFADESK logo">
+        <h1>ALFADESK – Popis stránok</h1>
+      </a>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <h2 class="title" style="text-align:center;margin:.6rem 0">Prehľad obrazoviek aplikácie</h2>
+    <p class="lead" style="text-align:center">
+      Toto je dokumentačný prehľad mocku aplikácie. Každá karta obsahuje popis účelu stránky a odkaz na statický prototyp.
+    </p>
+
+    <section class="grid">
+    <h2 class="visually-hidden">Prehľad obrazoviek</h2>
+      <article id="login" class="card anchor">
+        <img src="images/login.jpg" alt="Login">
+        <div class="body">
+          <h3>Prihlásenie (Login)</h3>
+          <p>Vstup do systému pomocou e‑mailu a hesla. Odkaz „Zabudli ste heslo?“ bude smerovať na reset hesla.</p>
+          <div class="meta"><a href="screens/screen-login.html">Zväčšiť náhľad</a></div>
+        </div>
+      </article>
+
+      <article id="home-user" class="card anchor">
+        <img src="images/domov.jpg" alt="Domov – používateľ">
+        <div class="body">
+          <h3>Domov – používateľ</h3>
+          <p>Prehľad ticketov + rýchle karty: otvorené/vyriešené, vytvoriť nový ticket. Tabuľka zobrazuje ID, zariadenie, problém, umiestnenie a stav.</p>
+          <div class="meta"><a href="screens/screen-dashboard-user.html">Zväčšiť náhľad</a></div>
+        </div>
+      </article>
+
+      <article id="new-ticket-user" class="card anchor">
+        <img src="images/novy_ticket.jpg" alt="Nový ticket – používateľ">
+        <div class="body">
+          <h3>Nový ticket – používateľ</h3>
+          <p>Formulár na založenie ticketu (HW/SW, zariadenie, názov, umiestnenie, popis, príloha, ETA).</p>
+          <div class="meta"><a href="screens/screen-new-ticket-user.html">Zväčšiť náhľad</a></div>
+        </div>
+      </article>
+
+      <article id="home-tech" class="card anchor">
+        <img src="images/domov3.jpg" alt="Domov – technik">
+        <div class="body">
+          <h3>Domov – technik</h3>
+          <p>Dashboard technika: nové/otvorené/vyriešené tickety a prechod do pracovného kalendára.</p>
+          <div class="meta"><a href="screens/screen-dashboard-tech.html">Zväčšiť náhľad</a></div>
+        </div>
+      </article>
+
+      <article id="calendar" class="card anchor">
+        <img src="images/kalendar.jpg" alt="Pracovný kalendár">
+        <div class="body">
+          <h3>Pracovný kalendár</h3>
+          <p>Týždenné zobrazenie s rozložením ticketov v čase. Prepínač týždňa + CTA na úpravu pracovného týždňa.</p>
+          <div class="meta"><a href="screens/screen-calendar.html">Zväčšiť náhľad</a></div>
+        </div>
+      </article>
+
+      <article id="calendar-edit" class="card anchor">
+        <img src="images/kalendar_popis.jpg" alt="Úprava pracovného týždňa">
+        <div class="body">
+          <h3>Úprava pracovného týždňa</h3>
+          <p>Režim editácie – zaškrtávacie polia pre dostupnosť v hodinových slotoch. Uloženie sa vráti do prehľadu kalendára.</p>
+          <div class="meta"><a href="screens/screen-calendar-edit.html">Zväčšiť náhľad</a></div>
+        </div>
+      </article>
+
+      <article id="ticket-start" class="card anchor">
+        <img src="images/riesenie_ticketu.jpg" alt="Riešenie ticketu">
+        <div class="body">
+          <h3>Nový ticket – detail &amp; štart riešenia</h3>
+          <p>Prehľad nahlásenia s predvyplnenými údajmi. Tlačidlo „Začať riešiť ticket“ otvorí formulár riešenia.</p>
+          <div class="meta"><a href="screens/screen-ticket-in-progress.html">Zväčšiť náhľad riešenia</a></div>
+        </div>
+      </article>
+    
+      <article id="ticket-resolved" class="card anchor">
+        <img src="images/vyrieseny_ticket.jpg" alt="Vyriešený ticket">
+        <div class="body">
+          <h3>Vyriešený ticket</h3>
+          <p>Sumarizácia zásahu s reálnym časom odstránenia, použitými normohodinami a priloženými dôkazmi.</p>
+          <div class="meta"><a href="screens/screen-ticket-resolved.html">Zväčšiť náhľad</a></div>
+        </div>
+      </article>
+    
+    </section>
+
+    
+
+    <p class="footer"><a href="index.html">← späť na úvod</a></p>
+  </main>
+</body>
+</html>
