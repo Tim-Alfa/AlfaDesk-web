@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>componentrs</title>
+    <meta name="author" content="Boris Vojtík">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar-container">
+
+  <div class="navbar-left">
+    <img src="image\AlfaDesk_logo_nav.png" alt="Logo" class="logo">
+    <span class="logo-text">AlfaDesk</span>
+  </div>
+
+  <div class="navbar-center">
+    DOMOV
+  </div>
+
+  <div class="navbar-right">
+    <span class="user-role">užívateľ</span>
+    <span class="user-name">Meno Pracovníka</span>
+
+    <div class="notification">
+      <img src="image\bell_icon.png" alt="Notifikácie" class="notification-icon">
+      <span class="notification-badge">3</span>
+    </div>
+  </div>
+
+</nav>
+
+
+<div class="tiles-grid">
+
+  <a href="#" class="tile-container ticket-new">
+    <div class="tile-content-text">
+      Počet nových ticketov
+    </div>
+    <div class="tile-circle ml-auto">
+      <span class="tile-circle-content">2</span>
+    </div>
+  </a>
+
+  <a href="#" class="tile-container ticket-open">
+    <div class="tile-content-text">
+      Počet otvorených ticketov
+    </div>
+    <div class="tile-circle ml-auto">
+      <span class="tile-circle-content">2</span>
+    </div>
+  </a>
+
+  <a href="#" class="tile-container ticket-solved">
+    <div class="tile-content-text">
+      Počet vyriešených ticketov
+    </div>
+    <div class="tile-circle ml-auto">
+      <span class="tile-circle-content">15</span>
+    </div>
+  </a>
+
+  <a href="#" class="tile-container ticket-new">
+    <div class="tile-content-text">
+      Vytvoriť nový ticket
+    </div>
+    <div class="tile-circle ml-auto">
+      <span class="tile-circle-content">+</span>
+    </div>
+  </a>
+
+  <a href="#" class="tile-container module-calendar">
+    <div class="tile-content-text">
+      Pracovný kalendár
+    </div>
+    <div class="ml-auto">
+        <img src="image/calendar.png" alt="Kalendár" class="tile-icon-img"> 
+    </div>
+  </a>
+
+  <a href="#" class="tile-container module-users">
+    <div class="tile-content-text">
+      Správa užívateľov
+    </div>
+    <div class="ml-auto">
+        <img src="image/users.png" alt="užívatelia" class="tile-icon-img"> 
+    </div>
+  </a>
+
+  <a href="#" class="tile-container module-users">
+    <div class="tile-content-text">
+      Pridať <br> úžívateľa
+    </div>
+    <div class="tile-circle ml-auto">
+      <span class="tile-circle-content">+</span>
+    </div>
+  </a>
+
+  <a href="#" class="tile-container module-hwsw">
+    <div class="tile-content-text">
+      Správa HW/SW
+    </div>
+    <div class="ml-auto">
+        <img src="image/hw_sw.png" alt="hardvér a softvér" class="tile-icon-img"> 
+    </div>
+  </a>
+
+  <a href="#" class="tile-container module-sw">
+    <div class="tile-content-text">
+      Správa SW
+    </div>
+    <div class="ml-auto">
+        <img src="image/sw.png" alt="softvér" class="tile-icon-img"> 
+    </div>
+  </a>
+
+  <a href="#" class="tile-container module-sw">
+    <div class="tile-content-text">
+      Pridať SW
+    </div>
+    <div class="tile-circle ml-auto">
+      <span class="tile-circle-content">+</span>
+    </div>
+  </a>
+
+  <a href="#" class="tile-container module-hw">
+    <div class="tile-content-text">
+      Správa HW
+    </div>
+    <div class="ml-auto">
+        <img src="image/hw.png" alt="hardvér" class="tile-icon-img"> 
+    </div>
+  </a>
+
+  <a href="#" class="tile-container module-hw">
+    <div class="tile-content-text">
+      Pridať HW
+    </div>
+    <div class="tile-circle ml-auto">
+      <span class="tile-circle-content">2</span>
+    </div>
+  </a>
+
+  <a href="#" class="tile-container ticket-new">
+    <div class="tile-content-text">
+      Prehľad ticketov
+    </div>
+    <div class="ml-auto">
+        <img src="image/tickets.png" alt="lístky" class="tile-icon-img"> 
+    </div>
+  </a>
+
+</div>
+
+<section class="page-centered-section">
+
+    <form method="POST" action="/api/vytvorit-ticket" enctype="multipart/form-data">
+
+        <div class="ticket-card">
+            
+            <h2 class="ticket-title">Vytvoriť nový ticket</h2>
+
+            <div class="field-group">
+                <label class="field-label">Typ problému</label>
+
+                <div class="radio-group-row">
+                    <label class="radio-option">
+                        <input type="radio" name="typ" value="HW" checked>
+                        <span>HW</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="typ" value="SW">
+                        <span>SW</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Zariadenie</label>
+                <div class="select-wrapper">
+                    <select class="input-select" name="zariadenie">
+                        <option value="">Vyber zariadenie…</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Názov zariadenia</label>
+                <input type="text" class="input-basic" name="zariadenie_nazov">
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Umiestnenie zariadenia</label>
+                <input type="text" class="input-basic" name="umiestnenie">
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Popis závady</label>
+                <textarea class="input-textarea" name="popis"></textarea>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Priložiť súbor</label>
+                <input type="file" class="input-file" name="prilohy_zadavatel">
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Nahlásil zamestnanec</label>
+                <input type="text" class="input-basic" name="zadavatel_meno">
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Predpokladaný čas odstránenia závady</label>
+                <input type="text" class="input-basic" name="odstranenie_predpoklad" readonly id="predpokladanyCas">
+            </div>
+
+            <button class="submit-btn" type="submit">Odoslať ticket</button>
+
+        </div>
+    </form>
+</section>
+
+</body>
+
+<footer> 
+</footer>
+
+</html>
