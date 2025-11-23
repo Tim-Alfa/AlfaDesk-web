@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>componentrs</title>
+    <title>User</title>
     <meta name="author" content="Boris Vojtík">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -37,34 +38,7 @@
 
 <div class="tiles-grid">
 
-  <a href="#" class="tile-container ticket-new">
-    <div class="tile-content-text">
-      Počet nových ticketov
-    </div>
-    <div class="tile-circle ml-auto">
-      <span class="tile-circle-content">2</span>
-    </div>
-  </a>
-
-  <a href="#" class="tile-container ticket-open">
-    <div class="tile-content-text">
-      Počet otvorených ticketov
-    </div>
-    <div class="tile-circle ml-auto">
-      <span class="tile-circle-content">2</span>
-    </div>
-  </a>
-
-  <a href="#" class="tile-container ticket-solved">
-    <div class="tile-content-text">
-      Počet vyriešených ticketov
-    </div>
-    <div class="tile-circle ml-auto">
-      <span class="tile-circle-content">15</span>
-    </div>
-  </a>
-
-  <a href="#" class="tile-container ticket-new">
+  <a href="javascript:void(0)" class="tile-container ticket-new" onclick="showSection('section-create-ticket')">
     <div class="tile-content-text">
       Vytvoriť nový ticket
     </div>
@@ -73,90 +47,36 @@
     </div>
   </a>
 
-  <a href="#" class="tile-container module-calendar">
+  <a href="javascript:void(0)" class="tile-container ticket-new" onclick="showSection('section-new-tickets')">
     <div class="tile-content-text">
-      Pracovný kalendár
-    </div>
-    <div class="ml-auto">
-        <img src="images/calendar.png" alt="Kalendár" class="tile-icon-img"> 
-    </div>
-  </a>
-
-  <a href="#" class="tile-container module-users">
-    <div class="tile-content-text">
-      Správa užívateľov
-    </div>
-    <div class="ml-auto">
-        <img src="images/users.png" alt="užívatelia" class="tile-icon-img"> 
-    </div>
-  </a>
-
-  <a href="#" class="tile-container module-users">
-    <div class="tile-content-text">
-      Pridať <br> úžívateľa
+      Počet nových ticketov
     </div>
     <div class="tile-circle ml-auto">
-      <span class="tile-circle-content">+</span>
+      <span class="tile-circle-content">10</span>
     </div>
   </a>
 
-  <a href="#" class="tile-container module-hwsw">
+  <a href="javascript:void(0)" class="tile-container ticket-open" onclick="showSection('section-open-tickets')">
     <div class="tile-content-text">
-      Správa HW/SW
-    </div>
-    <div class="ml-auto">
-        <img src="images/hw_sw.png" alt="hardvér a softvér" class="tile-icon-img"> 
-    </div>
-  </a>
-
-  <a href="#" class="tile-container module-sw">
-    <div class="tile-content-text">
-      Správa SW
-    </div>
-    <div class="ml-auto">
-        <img src="images/sw.png" alt="softvér" class="tile-icon-img"> 
-    </div>
-  </a>
-
-  <a href="#" class="tile-container module-sw">
-    <div class="tile-content-text">
-      Pridať SW
+      Počet otvorených ticketov
     </div>
     <div class="tile-circle ml-auto">
-      <span class="tile-circle-content">+</span>
+      <span class="tile-circle-content">10</span>
     </div>
   </a>
 
-  <a href="#" class="tile-container module-hw">
+  <a href="javascript:void(0)" class="tile-container ticket-solved" onclick="showSection('section-solved-tickets')">
     <div class="tile-content-text">
-      Správa HW
-    </div>
-    <div class="ml-auto">
-        <img src="images/hw.png" alt="hardvér" class="tile-icon-img"> 
-    </div>
-  </a>
-
-  <a href="#" class="tile-container module-hw">
-    <div class="tile-content-text">
-      Pridať HW
+      Počet vyriešených ticketov
     </div>
     <div class="tile-circle ml-auto">
-      <span class="tile-circle-content">2</span>
-    </div>
-  </a>
-
-  <a href="#" class="tile-container ticket-new">
-    <div class="tile-content-text">
-      Prehľad ticketov
-    </div>
-    <div class="ml-auto">
-        <img src="images/tickets.png" alt="lístky" class="tile-icon-img"> 
+      <span class="tile-circle-content">10</span>
     </div>
   </a>
 
 </div>
 
-<section id="section-create-ticket" class="page-centered-section">
+<section id="section-create-ticket" class="content-section page-centered-section">
 
     <form id="createTicketForm" method="POST" action="/api/vytvorit-ticket" enctype="multipart/form-data">
 
@@ -202,320 +122,13 @@
             </div>
 
 
-            <button class="submit-btn" type="submit">Odoslať ticket</button>
+            <button class="submit-btn" type="button">Odoslať ticket</button>
 
         </div>
     </form>
 </section>
 
-<section class="page-centered-section">
-
-    <form method="POST" action="/api/vytvorit-ticket" enctype="multipart/form-data">
-
-        <div class="ticket-card">
-            
-            <h2 class="ticket-title">Vytvoriť nový ticket</h2>
-
-            <div class="field-group">
-                <label class="field-label">Typ problému</label>
-
-                <div class="radio-group-row">
-                    <label class="radio-option">
-                        <input type="radio" name="typ" value="HW" checked>
-                        <span>HW</span>
-                    </label>
-
-                    <label class="radio-option">
-                        <input type="radio" name="typ" value="SW">
-                        <span>SW</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="field-group">
-                <label class="field-label">Zariadenie</label>
-                <div class="select-wrapper">
-                    <select class="input-select" name="zariadenie">
-                        <option value="">Vyber zariadenie…</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="field-group">
-                <label class="field-label">Názov zariadenia</label>
-                <input type="text" class="input-basic" name="zariadenie_nazov">
-            </div>
-
-            <div class="field-group">
-                <label class="field-label">Umiestnenie zariadenia</label>
-                <input type="text" class="input-basic" name="umiestnenie">
-            </div>
-
-            <div class="field-group">
-                <label class="field-label">Popis závady</label>
-                <textarea class="input-textarea" name="popis"></textarea>
-            </div>
-
-            <div class="field-group">
-                <label class="field-label">Priložiť súbor</label>
-                <input type="file" class="input-file" name="prilohy_zadavatel">
-            </div>
-
-            <div class="field-group">
-                <label class="field-label">Nahlásil zamestnanec</label>
-                <input type="text" class="input-basic" name="zadavatel_meno">
-            </div>
-
-            <div class="field-group">
-                <label class="field-label">Predpokladaný čas odstránenia závady</label>
-                <input type="text" class="input-basic" name="odstranenie_predpoklad" readonly id="predpokladanyCas">
-            </div>
-
-            <button class="submit-btn" type="submit">Odoslať ticket</button>
-
-        </div>
-    </form>
-</section>
-
-<section class="page-centered-section">
-
-    <form method="POST" action="/api/ukoncit-ticket" enctype="multipart/form-data">
-        
-        <input type="hidden" name="ticket_id" value="TKT-2025-003">
-
-        <div class="ticket-card mode-open wide">
-            
-            <h2 class="ticket-title">Riešenie ticketu TKT-2025-003</h2>
-            
-            <div class="ticket-detail-grid"> 
-                
-                <div class="grid-item item-left">
-                    <label class="field-label">Typ problému</label>
-                    <div class="static-box">HW</div>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Zariadenie</label>
-                    <input type="text" class="input-basic" name="db_zariadenie" value="Monitor" readonly>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Názov zariadenia</label>
-                    <input type="text" class="input-basic" name="db_nazov" value="PC Lenovo ThinkCentre" readonly>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Umiestnenie zariadenia</label>
-                    <input type="text" class="input-basic" name="db_umiestnenie" value="Kancl B3 m. č. 029" readonly>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Popis závady</label>
-                    <textarea class="input-textarea" name="db_popis" readonly>Nedá sa zapnúť.</textarea>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Priložený súbor (Zadávateľ)</label>
-                    <div class="static-box text-muted italic">
-                        monitor.jpeg
-                    </div>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Nahlásil zamestnanec</label>
-                    <input type="text" class="input-basic" value="Anna Pekná" readonly>
-                </div>
-
-                <div class="grid-item item-left form-row-split">
-                    <div class="split-half">
-                        <label class="field-label">Začiatok riešenia</label>
-                        <input type="text" class="input-basic text-muted" value="13.10.2025 14:40" readonly>
-                    </div>
-                    <div class="split-half">
-                        <label class="field-label">Normohodiny (Plán)</label>
-                        <input type="text" class="input-basic" value="0,25 NH" readonly>
-                    </div>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Predpokladaný čas</label>
-                    <input type="text" class="input-basic" value="13.10.2025 14:55" readonly>
-                </div>
-
-
-                <div class="grid-item image-area">
-                    <div class="image-frame">
-                         <img src="images/monitor.png" alt="Náhľad" class="image-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:var(--text-primary); font-weight:bold;\'>Bez náhľadu</span>'">
-                    </div>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Popis riešenia závady</label>
-                    <textarea class="input-textarea" name="riesenie_popis" placeholder="Popíšte postup opravy..."></textarea>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Priložiť súbor (Výstup)</label>
-                    <input type="file" class="input-file" name="riesenie_priloha">
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Vyriešil zamestnanec</label>
-                    <input type="text" class="input-basic" name="riesitel_meno" value="Jaroslav Smutný" readonly>
-                </div>
-
-                <div class="grid-item item-right form-row-split">
-                    <div class="split-half">
-                        <label class="field-label">Koniec riešenia</label>
-                        <input type="text" class="input-basic text-muted" name="cas_koniec" value="13.10.2025 14:52" readonly>
-                    </div>
-                    <div class="split-half">
-                        <label class="field-label">Normohodiny (Reál)</label>
-                        <input type="number" step="0.01" class="input-basic text-green" name="nh_real" value="0.2">
-                    </div>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Reálny čas odstránenia závady</label>
-                    <div class="grid-item item-left">
-                        <input type="text" class="input-basic" value="13.10.2025 15:25" readonly>
-                    </div>
-                </div>
-
-            </div>
-            
-            <div class="footer-actions">
-                <button type="submit" class="submit-btn btn-terminate">
-                    Ukončiť riešenie ticketu
-                </button>
-            </div>
-
-        </div>
-    </form>
-</section>
-
-
-
-
-
-
-
-<section id="section-solved-detail" class="page-centered-section">
-
-    <div> 
-        
-        <input type="hidden" name="ticket_id" value="TKT-2025-003">
-
-        <div class="ticket-card mode-solved wide"> 
-            
-            <h2 class="ticket-title">Ukončený ticket TKT-2025-003</h2>
-            
-            <div class="ticket-detail-grid"> 
-                
-                <div class="grid-item item-left">
-                    <label class="field-label">Typ problému</label>
-                    <div class="static-box">HW</div>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Zariadenie</label>
-                    <input type="text" class="input-basic" name="db_zariadenie" value="Monitor" readonly>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Názov zariadenia</label>
-                    <input type="text" class="input-basic" name="db_nazov" value="PC Lenovo ThinkCentre" readonly>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Umiestnenie zariadenia</label>
-                    <input type="text" class="input-basic" name="db_umiestnenie" value="Kancl B3 m. č. 029" readonly>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Popis závady</label>
-                    <textarea class="input-textarea" name="db_popis" readonly>Nedá sa zapnúť.</textarea>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Priložený súbor (Zadávateľ)</label>
-                    <div class="static-box text-muted italic">
-                        <a href="images/monitor.png" target="_blank" style="color: var(--text-link); text-decoration: underline;">
-                            monitor.jpeg
-                        </a>
-                    </div>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Nahlásil zamestnanec</label>
-                    <input type="text" class="input-basic" value="Anna Pekná" readonly>
-                </div>
-
-                <div class="grid-item item-left form-row-split">
-                    <div class="split-half">
-                        <label class="field-label">Začiatok riešenia</label>
-                        <input type="text" class="input-basic text-muted" value="13.10.2025 14:40" readonly>
-                    </div>
-                    <div class="split-half">
-                        <label class="field-label">Normohodiny (Plán)</label>
-                        <input type="text" class="input-basic" value="0,25 NH" readonly>
-                    </div>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Predpokladaný čas</label>
-                    <input type="text" class="input-basic" value="13.10.2025 14:55" readonly>
-                </div>
-
-
-                <div class="grid-item image-area">
-                    <div class="image-frame">
-                         <img src="images/monitor.png" alt="Náhľad" class="image-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:var(--text-primary); font-weight:bold;\'>Bez náhľadu</span>'">
-                    </div>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Popis riešenia závady</label>
-                    <textarea class="input-textarea" name="riesenie_popis" readonly>Poškodené tlačidlo. Monitor vymenený za nový</textarea>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Priložiť súbor (Výstup)</label>
-                    <div class="static-box">
-                         <a href="images/report.pdf" target="_blank" style="color: var(--text-link); text-decoration: underline;">servisny_protokol.pdf</a>
-                    </div>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Vyriešil zamestnanec</label>
-                    <input type="text" class="input-basic" name="riesitel_meno" value="Jaroslav Smutný" readonly>
-                </div>
-
-                <div class="grid-item item-right form-row-split">
-                    <div class="split-half">
-                        <label class="field-label">Koniec riešenia</label>
-                        <input type="text" class="input-basic text-muted" name="cas_koniec" value="13.10.2025 14:52" readonly>
-                    </div>
-                    <div class="split-half">
-                        <label class="field-label">Normohodiny (Reál)</label>
-                         <input type="text" class="input-basic text-green" name="nh_real" value="0.25 NH" readonly>
-                    </div>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Reálny čas odstránenia závady</label>
-                    <div class="grid-item item-left">
-                        <input type="text" class="input-basic" value="13.10.2025 15:25" readonly>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<div class="table-wrapper">
+<div id="section-all-tickets" class="content-section table-wrapper" style="display: block;">
     <table class="custom-table table-tickets">
         <thead>
             <tr>
@@ -611,7 +224,7 @@
     </table>
 </div>
 
-<div class="table-wrapper">
+<div id="section-open-tickets" class="content-section table-wrapper">
     <table class="custom-table table-open-tickets">
         <thead>
             <tr>
@@ -709,7 +322,7 @@
     </table>
 </div>
 
-<div class="table-wrapper">
+<div id="section-new-tickets" class="content-section table-wrapper">
     <table class="custom-table table-new-tickets">
         <thead>
             <tr>
@@ -806,7 +419,7 @@
     </table>
 </div>
 
-<div class="table-wrapper">
+<div id="section-solved-tickets" class="content-section table-wrapper">
     <table class="custom-table table-solved-tickets">
         <thead>
             <tr>
@@ -903,6 +516,7 @@
     </table>
 </div>
 
+<script src="script.js"></script>
 </body>
 
 <footer> 
