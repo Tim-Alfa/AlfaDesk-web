@@ -225,6 +225,515 @@
     </form>
 </section>
 
+<section class="page-centered-section">
+
+    <form method="POST" action="/api/ukoncit-ticket" enctype="multipart/form-data">
+        
+        <input type="hidden" name="ticket_id" value="TKT-2025-003">
+
+        <div class="ticket-card mode-open wide">
+            
+            <h2 class="ticket-title">Riešenie ticketu TKT-2025-003</h2>
+            
+            <div class="ticket-detail-grid"> 
+                
+                <div class="grid-item item-left">
+                    <label class="field-label">Typ problému</label>
+                    <div class="static-box">HW</div>
+                </div>
+
+                <div class="grid-item item-left">
+                    <label class="field-label">Zariadenie</label>
+                    <input type="text" class="input-basic" name="db_zariadenie" value="Monitor" readonly>
+                </div>
+
+                <div class="grid-item item-left">
+                    <label class="field-label">Názov zariadenia</label>
+                    <input type="text" class="input-basic" name="db_nazov" value="PC Lenovo ThinkCentre" readonly>
+                </div>
+
+                <div class="grid-item item-left">
+                    <label class="field-label">Umiestnenie zariadenia</label>
+                    <input type="text" class="input-basic" name="db_umiestnenie" value="Kancl B3 m. č. 029" readonly>
+                </div>
+
+                <div class="grid-item item-left">
+                    <label class="field-label">Popis závady</label>
+                    <textarea class="input-textarea" name="db_popis" readonly>Nedá sa zapnúť.</textarea>
+                </div>
+
+                <div class="grid-item item-left">
+                    <label class="field-label">Priložený súbor (Zadávateľ)</label>
+                    <div class="static-box text-muted italic">
+                        monitor.jpeg
+                    </div>
+                </div>
+
+                <div class="grid-item item-left">
+                    <label class="field-label">Nahlásil zamestnanec</label>
+                    <input type="text" class="input-basic" value="Anna Pekná" readonly>
+                </div>
+
+                <div class="grid-item item-left form-row-split">
+                    <div class="split-half">
+                        <label class="field-label">Začiatok riešenia</label>
+                        <input type="text" class="input-basic text-muted" value="13.10.2025 14:40" readonly>
+                    </div>
+                    <div class="split-half">
+                        <label class="field-label">Normohodiny (Plán)</label>
+                        <input type="text" class="input-basic" value="0,25 NH" readonly>
+                    </div>
+                </div>
+
+                <div class="grid-item item-left">
+                    <label class="field-label">Predpokladaný čas</label>
+                    <input type="text" class="input-basic" value="13.10.2025 14:55" readonly>
+                </div>
+
+
+                <div class="grid-item image-area">
+                    <div class="image-frame">
+                         <img src="images/monitor.png" alt="Náhľad" class="image-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:var(--text-primary); font-weight:bold;\'>Bez náhľadu</span>'">
+                    </div>
+                </div>
+
+                <div class="grid-item item-right">
+                    <label class="field-label">Popis riešenia závady</label>
+                    <textarea class="input-textarea" name="riesenie_popis" placeholder="Popíšte postup opravy..."></textarea>
+                </div>
+
+                <div class="grid-item item-right">
+                    <label class="field-label">Priložiť súbor (Výstup)</label>
+                    <input type="file" class="input-file" name="riesenie_priloha">
+                </div>
+
+                <div class="grid-item item-right">
+                    <label class="field-label">Vyriešil zamestnanec</label>
+                    <input type="text" class="input-basic" name="riesitel_meno" value="Jaroslav Smutný" readonly>
+                </div>
+
+                <div class="grid-item item-right form-row-split">
+                    <div class="split-half">
+                        <label class="field-label">Koniec riešenia</label>
+                        <input type="text" class="input-basic text-muted" name="cas_koniec" value="13.10.2025 14:52" readonly>
+                    </div>
+                    <div class="split-half">
+                        <label class="field-label">Normohodiny (Reál)</label>
+                        <input type="number" step="0.01" class="input-basic text-green" name="nh_real" value="0.2">
+                    </div>
+                </div>
+
+                <div class="grid-item item-right">
+                    <label class="field-label">Stav po ukončení</label>
+                    <div class="select-wrapper">
+                         <select class="input-select" name="final_status">
+                             <option value="solved" selected>Vyriešené</option>
+                             <option value="unsolved">Nevyriešené (Eskalácia)</option>
+                         </select>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="footer-actions">
+                <button type="submit" class="submit-btn btn-terminate">
+                    Ukončiť riešenie ticketu
+                </button>
+            </div>
+
+        </div>
+    </form>
+</section>
+
+
+<div class="table-wrapper">
+    <table class="custom-table table-tickets">
+        <thead>
+            <tr>
+                <th>ID ticketu</th>
+                <th>Názov zariadenia</th>
+                <th>Problém</th>
+                <th>Umiestnenie</th>
+                <th>Stav</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–001</td>
+                <td data-label="Názov zariadenia">Tlačiareň HP LaserJet 1856</td>
+                <td data-label="Problém">Prázdny zásobník čierneho toneru</td>
+                <td data-label="Umiestnenie">Hala C<br>m. č. 318</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–002</td>
+                <td data-label="Názov zariadenia">Monitor Dell U2412M</td>
+                <td data-label="Problém">Nesvieti podsvietenie</td>
+                <td data-label="Umiestnenie">Administratívna budova<br>m. č. 204</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–003</td>
+                <td data-label="Názov zariadenia">PC Lenovo ThinkCentre M720s</td>
+                <td data-label="Problém">Náhodné reštarty</td>
+                <td data-label="Umiestnenie">Kancelária B3<br>m. č. 029</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–004</td>
+                <td data-label="Názov zariadenia">Notebook HP ProBook 450 G7</td>
+                <td data-label="Problém">Nejde zvuk</td>
+                <td data-label="Umiestnenie">Administratíva – HR<br>m. č. 111</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–005</td>
+                <td data-label="Názov zariadenia">PC Dell OptiPlex 7080</td>
+                <td data-label="Problém">Poškodený disk</td>
+                <td data-label="Umiestnenie">Hala A<br>m. č. 015</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–006</td>
+                <td data-label="Názov zariadenia">Switch TP-Link SG1016D</td>
+                <td data-label="Problém">Vypadáva sieť</td>
+                <td data-label="Umiestnenie">Serverovňa<br>Rack 3</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–007</td>
+                <td data-label="Názov zariadenia">Notebook Lenovo T470</td>
+                <td data-label="Problém">Nefunkčné USB porty</td>
+                <td data-label="Umiestnenie">Kancelária A2<br>m. č. 021</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–008</td>
+                <td data-label="Názov zariadenia">Monitor Samsung S24R350</td>
+                <td data-label="Problém">Mihá obraz</td>
+                <td data-label="Umiestnenie">Výrobná hala<br>Miestnosť 07</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–009</td>
+                <td data-label="Názov zariadenia">PC HP EliteDesk 800 G6</td>
+                <td data-label="Problém">Ventilátor hlučný</td>
+                <td data-label="Umiestnenie">Oddelenie kvality<br>m. č. 125</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–010</td>
+                <td data-label="Názov zariadenia">Tlačiareň Brother HL-L2350DW</td>
+                <td data-label="Problém">Zaseknutý papier</td>
+                <td data-label="Umiestnenie">Kancelária A5<br>m. č. 033</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-wrapper">
+    <table class="custom-table table-open-tickets">
+        <thead>
+            <tr>
+                <th>ID ticketu</th>
+                <th>Názov zariadenia</th>
+                <th>Problém</th>
+                <th>Umiestnenie</th>
+                <th>Predpokladaný čas odstránenia</th>
+                <th>Stav</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–005</td>
+                <td data-label="Názov zariadenia">PC Dell OptiPlex 7080</td>
+                <td data-label="Problém">Poškodený disk</td>
+                <td data-label="Umiestnenie">Hala A<br>m. č. 015</td>
+                <td data-label="Predpokladaný čas odstránenia">24.01.2025 14:00</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–006</td>
+                <td data-label="Názov zariadenia">Switch TP-Link SG1016D</td>
+                <td data-label="Problém">Vypadáva sieť</td>
+                <td data-label="Umiestnenie">Serverovňa<br>Rack 3</td>
+                <td data-label="Predpokladaný čas odstránenia">23.01.2025 16:00</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–008</td>
+                <td data-label="Názov zariadenia">Monitor Samsung S24R350</td>
+                <td data-label="Problém">Mihá obraz</td>
+                <td data-label="Umiestnenie">Výrobná hala<br>Miestnosť 07</td>
+                <td data-label="Predpokladaný čas odstránenia">24.01.2025 10:00</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–012</td>
+                <td data-label="Názov zariadenia">Klimatizácia Daikin</td>
+                <td data-label="Problém">Nechladí</td>
+                <td data-label="Umiestnenie">Serverovňa<br>Hlavná</td>
+                <td data-label="Predpokladaný čas odstránenia">25.01.2025 09:00</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–015</td>
+                <td data-label="Názov zariadenia">Server Backup Unit</td>
+                <td data-label="Problém">Chyba zálohovania</td>
+                <td data-label="Umiestnenie">Serverovňa<br>Rack 1</td>
+                <td data-label="Predpokladaný čas odstránenia">23.01.2025 22:00</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–018</td>
+                <td data-label="Názov zariadenia">Projektor Epson EB-2250</td>
+                <td data-label="Problém">Vypálená lampa</td>
+                <td data-label="Umiestnenie">Zasadačka<br>2. poschodie</td>
+                <td data-label="Predpokladaný čas odstránenia">26.01.2025 08:30</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–021</td>
+                <td data-label="Názov zariadenia">VPN Gateway</td>
+                <td data-label="Problém">Pomalé pripojenie</td>
+                <td data-label="Umiestnenie">IT Oddelenie<br>m. č. 102</td>
+                <td data-label="Predpokladaný čas odstránenia">23.01.2025 15:30</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–024</td>
+                <td data-label="Názov zariadenia">Tlačiareň Zebra ZT411</td>
+                <td data-label="Problém">Kalibrácia štítkov</td>
+                <td data-label="Umiestnenie">Sklad expedície<br>Sekcia B</td>
+                <td data-label="Predpokladaný čas odstránenia">24.01.2025 11:00</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–029</td>
+                <td data-label="Názov zariadenia">Kávovar Philips Saeco</td>
+                <td data-label="Problém">Zablokovaný mlynček</td>
+                <td data-label="Umiestnenie">Kuchynka<br>1. poschodie</td>
+                <td data-label="Predpokladaný čas odstránenia">27.01.2025 07:00</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–033</td>
+                <td data-label="Názov zariadenia">Wifi AP Unifi U6</td>
+                <td data-label="Problém">Strata signálu</td>
+                <td data-label="Umiestnenie">Sklad príjmu<br>Rampa 2</td>
+                <td data-label="Predpokladaný čas odstránenia">24.01.2025 13:00</td>
+                <td data-label="Stav" class="status-open">otvorený</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-wrapper">
+    <table class="custom-table table-new-tickets">
+        <thead>
+            <tr>
+                <th>ID ticketu</th>
+                <th>Názov zariadenia</th>
+                <th>Problém</th>
+                <th>Umiestnenie</th>
+                <th>Predpokladaný čas odstránenia</th>
+                <th>Stav</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–040</td>
+                <td data-label="Názov zariadenia">Skener Canon DR-C225</td>
+                <td data-label="Problém">Nekomunikuje s PC</td>
+                <td data-label="Umiestnenie">Podateľňa<br>Prízemie</td>
+                <td data-label="Predpokladaný čas odstránenia">24.01.2025 12:00</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–041</td>
+                <td data-label="Názov zariadenia">Notebook Dell Latitude 5520</td>
+                <td data-label="Problém">Nefunkčná klávesnica</td>
+                <td data-label="Umiestnenie">Kancelária C4<br>m. č. 202</td>
+                <td data-label="Predpokladaný čas odstránenia">25.01.2025 09:30</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–042</td>
+                <td data-label="Názov zariadenia">Monitor BenQ GL2480</td>
+                <td data-label="Problém">Rozbitý displej</td>
+                <td data-label="Umiestnenie">Výrobná hala<br>Linka 1</td>
+                <td data-label="Predpokladaný čas odstránenia">24.01.2025 15:00</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–043</td>
+                <td data-label="Názov zariadenia">PC HP ProDesk 400</td>
+                <td data-label="Problém">Modrá obrazovka (BSOD)</td>
+                <td data-label="Umiestnenie">Logistika<br>m. č. 005</td>
+                <td data-label="Predpokladaný čas odstránenia">24.01.2025 16:30</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–044</td>
+                <td data-label="Názov zariadenia">Tlačiareň Kyocera Ecosys</td>
+                <td data-label="Problém">Špiní papier</td>
+                <td data-label="Umiestnenie">Chodba B<br>1. poschodie</td>
+                <td data-label="Predpokladaný čas odstránenia">25.01.2025 10:00</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–045</td>
+                <td data-label="Názov zariadenia">IP Telefón Cisco 7841</td>
+                <td data-label="Problém">Nejde vytočiť číslo</td>
+                <td data-label="Umiestnenie">Call centrum<br>Box 4</td>
+                <td data-label="Predpokladaný čas odstránenia">24.01.2025 11:30</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–046</td>
+                <td data-label="Názov zariadenia">Tablet Samsung Galaxy Tab</td>
+                <td data-label="Problém">Nenabíja sa</td>
+                <td data-label="Umiestnenie">Sklad náhradných dielov</td>
+                <td data-label="Predpokladaný čas odstránenia">26.01.2025 08:00</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–047</td>
+                <td data-label="Názov zariadenia">Switch Cisco 2960</td>
+                <td data-label="Problém">Port 12 nefunkčný</td>
+                <td data-label="Umiestnenie">Serverovňa<br>Rack 2</td>
+                <td data-label="Predpokladaný čas odstránenia">24.01.2025 14:15</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–048</td>
+                <td data-label="Názov zariadenia">Projektor Acer X118H</td>
+                <td data-label="Problém">Prehrieva sa</td>
+                <td data-label="Umiestnenie">Zasadačka<br>Malá</td>
+                <td data-label="Predpokladaný čas odstránenia">25.01.2025 13:00</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–049</td>
+                <td data-label="Názov zariadenia">Dochádzkový terminál</td>
+                <td data-label="Problém">Nereaguje na čipy</td>
+                <td data-label="Umiestnenie">Vrátnica<br>Vchod A</td>
+                <td data-label="Predpokladaný čas odstránenia">24.01.2025 09:45</td>
+                <td data-label="Stav" class="status-new">nový</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-wrapper">
+    <table class="custom-table table-solved-tickets">
+        <thead>
+            <tr>
+                <th>ID ticketu</th>
+                <th>Názov zariadenia</th>
+                <th>Problém</th>
+                <th>Umiestnenie</th>
+                <th>Čas odstránenia závady</th>
+                <th>Stav</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–040</td>
+                <td data-label="Názov zariadenia">Skener Canon DR-C225</td>
+                <td data-label="Problém">Nekomunikuje s PC</td>
+                <td data-label="Umiestnenie">Podateľňa<br>Prízemie</td>
+                <td data-label="Čas odstránenia závady">24.01.2025 12:00</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–041</td>
+                <td data-label="Názov zariadenia">Notebook Dell Latitude 5520</td>
+                <td data-label="Problém">Nefunkčná klávesnica</td>
+                <td data-label="Umiestnenie">Kancelária C4<br>m. č. 202</td>
+                <td data-label="Čas odstránenia závady">25.01.2025 09:30</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–042</td>
+                <td data-label="Názov zariadenia">Monitor BenQ GL2480</td>
+                <td data-label="Problém">Rozbitý displej</td>
+                <td data-label="Umiestnenie">Výrobná hala<br>Linka 1</td>
+                <td data-label="Čas odstránenia závady">24.01.2025 15:00</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–043</td>
+                <td data-label="Názov zariadenia">PC HP ProDesk 400</td>
+                <td data-label="Problém">Modrá obrazovka (BSOD)</td>
+                <td data-label="Umiestnenie">Logistika<br>m. č. 005</td>
+                <td data-label="Čas odstránenia závady">24.01.2025 16:30</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–044</td>
+                <td data-label="Názov zariadenia">Tlačiareň Kyocera Ecosys</td>
+                <td data-label="Problém">Špiní papier</td>
+                <td data-label="Umiestnenie">Chodba B<br>1. poschodie</td>
+                <td data-label="Čas odstránenia závady">25.01.2025 10:00</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–045</td>
+                <td data-label="Názov zariadenia">IP Telefón Cisco 7841</td>
+                <td data-label="Problém">Nejde vytočiť číslo</td>
+                <td data-label="Umiestnenie">Call centrum<br>Box 4</td>
+                <td data-label="Čas odstránenia závady">24.01.2025 11:30</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–046</td>
+                <td data-label="Názov zariadenia">Tablet Samsung Galaxy Tab</td>
+                <td data-label="Problém">Nenabíja sa</td>
+                <td data-label="Umiestnenie">Sklad náhradných dielov</td>
+                <td data-label="Čas odstránenia závady">26.01.2025 08:00</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–047</td>
+                <td data-label="Názov zariadenia">Switch Cisco 2960</td>
+                <td data-label="Problém">Port 12 nefunkčný</td>
+                <td data-label="Umiestnenie">Serverovňa<br>Rack 2</td>
+                <td data-label="Čas odstránenia závady">24.01.2025 14:15</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–048</td>
+                <td data-label="Názov zariadenia">Projektor Acer X118H</td>
+                <td data-label="Problém">Prehrieva sa</td>
+                <td data-label="Umiestnenie">Zasadačka<br>Malá</td>
+                <td data-label="Čas odstránenia závady">25.01.2025 13:00</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+            <tr>
+                <td data-label="ID ticketu">TKT–2025–049</td>
+                <td data-label="Názov zariadenia">Dochádzkový terminál</td>
+                <td data-label="Problém">Nereaguje na čipy</td>
+                <td data-label="Umiestnenie">Vrátnica<br>Vchod A</td>
+                <td data-label="Čas odstránenia závady">24.01.2025 09:45</td>
+                <td data-label="Stav" class="status-solved">ukončený</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 
 <footer> 

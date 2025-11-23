@@ -1,11 +1,11 @@
 :root {
-  /* --- Paleta farieb --- */
+  /* --- Globálne premenné --- */
+  
+  /* Farby */
   --white: #ffffff;
   --black: #000000;
-  
-  /* Farby textu */
   --text-primary: #322c23;
-  --text-muted: #858586;
+  --text-secondary: #858586;
   --text-nav: #004aad;
   
   /* Pozadia */
@@ -17,6 +17,7 @@
   --status-new: #4c68df;
   --status-open: #fcbd27;
   --status-solved: #fa4b73;
+  --status-text-green: #00bf63;
 
   /* Farby modulov */
   --module-calendar: #9fa0a2;
@@ -25,13 +26,14 @@
   --module-sw: #bc3fde;
   --module-users: #00bf63;
 
-  /* Štýly tabuľky */
+  /* Tabuľky */
   --table-row-light: rgba(0, 0, 0, 0.02);
   --table-row-dark: #e5edf1;
   --table-border: #ffffff;
+  --column-border: #ffffff; 
 }
 
-/* --- Reset & Základ --- */
+/* --- Reset a základné nastavenia --- */
 * {
   margin: 0;
   padding: 0;
@@ -42,6 +44,7 @@ html, body {
   height: 100%;
   font-family: 'Inter', sans-serif;
   background-color: var(--white);
+  color: var(--text-primary);
 }
 
 button, input, textarea, select {
@@ -58,11 +61,7 @@ a {
   color: inherit;
 }
 
-footer {
-  height: 20px;
-}
-
-/* --- Pomocné triedy --- */
+/* --- Pomocné a utility triedy --- */
 .hidden { 
   display: none !important; 
 }
@@ -71,6 +70,19 @@ footer {
   margin-left: auto;
   flex-shrink: 0;
   padding-left: 0.5rem;
+}
+
+.text-muted {
+  color: var(--text-secondary);
+}
+
+.italic {
+  font-style: italic;
+}
+
+.text-green {
+  color: var(--status-text-green);
+  font-weight: bold;
 }
 
 /* --- Navigácia --- */
@@ -82,11 +94,10 @@ footer {
   margin: 1rem;   
   padding: 1rem;
   display: flex;
-  flex-direction: column; /* Predvolené pre mobil */
+  flex-direction: column; /* Mobile first */
   gap: 0.5rem;
 }
 
-/* Ľavá sekcia: Logo */
 .navbar-left {
   display: flex;
   align-items: center;
@@ -105,14 +116,12 @@ footer {
   font-size: 1.5rem;
 }
 
-/* Stredná sekcia: Odkazy */
 .navbar-center {
   font-weight: 600;
   font-size: 1.75rem;
   text-align: center;
 }
 
-/* Pravá sekcia: Užívateľ & Notifikácie */
 .navbar-right {
   display: flex;
   align-items: center;
@@ -126,6 +135,7 @@ footer {
   font-size: 1.5rem;
 }
 
+/* Notifikácie */
 .notification {
   position: relative;
   display: flex;
@@ -150,7 +160,7 @@ footer {
   padding: 0 4px;
 }
 
-/* Media Queries pre navigáciu */
+/* Navigácia - Desktop */
 @media (min-width: 768px) {
   .navbar-container {
     flex-direction: row;        
@@ -176,7 +186,6 @@ footer {
 }
 
 @media (min-width: 1200px) {
-  /* Absolútne centrovanie pre veľké obrazovky */
   .navbar-center {
     position: absolute;
     left: 50%;
@@ -191,7 +200,7 @@ footer {
   }
 }
 
-/* --- Dlaždice nástenky --- */
+/* --- Grid dlaždíc (Dashboard) --- */
 .tiles-grid {
   display: flex;
   flex-wrap: wrap;
@@ -206,7 +215,7 @@ footer {
   align-items: center;
   box-sizing: border-box;
   min-height: 160px;
-  width: 100%; /* Predvolené pre mobil */
+  width: 100%; /* Mobile first */
   min-width: 250px;
   padding: 1.5rem;
   border-radius: 0.75rem;
@@ -234,7 +243,6 @@ footer {
   display: block;
 }
 
-/* Kruh s počítadlom */
 .tile-circle {
   background-color: rgba(255, 255, 255, 0.25);
   height: 4.5rem; 
@@ -254,7 +262,7 @@ footer {
   padding-bottom: 2px;
 }
 
-/* Farby dlaždíc */
+/* Varianty dlaždíc */
 .tile-container.ticket-new { background-color: var(--status-new); }
 .tile-container.ticket-open { background-color: var(--status-open); }
 .tile-container.ticket-solved { background-color: var(--status-solved); }
@@ -264,7 +272,7 @@ footer {
 .tile-container.module-hw { background-color: var(--module-hw); }
 .tile-container.module-sw { background-color: var(--module-sw); }
 
-/* Media Queries pre dlaždice */
+/* Grid responsivita */
 @media (min-width: 640px) {
   .tile-container {
     width: calc(50% - 0.5rem);
@@ -278,7 +286,7 @@ footer {
   }
 }
 
-/* --- Formuláre (Tvorba ticketu) --- */
+/* --- Formuláre a karty --- */
 .page-centered-section {
   margin: 1rem;
 }
@@ -290,7 +298,7 @@ footer {
   padding: 1rem 1.5rem;
   width: 100%;
   max-width: 33rem;
-  margin: 0 auto; /* Horizontálne vycentrované */
+  margin: 0 auto;
 }
 
 .ticket-title {
@@ -311,7 +319,7 @@ footer {
   margin-bottom: 4px;
 }
 
-/* Základ pre inputy */
+/* Inputy - základný štýl */
 .input-basic, 
 .input-select, 
 .input-textarea,
@@ -324,7 +332,7 @@ footer {
   padding: 8px 12px;
 }
 
-/* Špecifické pre Select */
+/* Select šípka */
 .input-select {
   appearance: none;
   background-image: url('data:image/svg+xml;utf8,<svg fill="%23322c23" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
@@ -332,13 +340,12 @@ footer {
   background-position: right 10px center;
 }
 
-/* Špecifické pre Textarea */
 .input-textarea {
   height: 60px;
   resize: vertical;
 }
 
-/* Skupina rádio tlačidiel */
+/* Radio buttony */
 .radio-group-row {
   display: flex;
   gap: 1.5rem;
@@ -370,4 +377,356 @@ footer {
 
 .submit-btn:hover {
   background: var(--bg-input-hover);
+}
+
+/* --- Detail Ticketu (Rozšírenie) --- */
+
+/* Variant: Široká karta */
+.ticket-card.wide {
+  max-width: 68rem;
+}
+
+/* Variant: Otvorený ticket (Žltá schéma) */
+.ticket-card.mode-open {
+  background-color: var(--status-open);
+  color: var(--white);
+}
+
+/* Prepísanie farieb inputov v žltej karte */
+.ticket-card.mode-open .input-basic,
+.ticket-card.mode-open .input-textarea,
+.ticket-card.mode-open .input-file,
+.ticket-card.mode-open .static-box {
+  background-color: var(--white);
+  color: var(--text-primary);
+}
+
+.static-box {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Layout detailu */
+.ticket-detail-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row-split {
+  display: flex;
+  gap: 1rem;
+}
+
+.split-half {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Obrázok náhľad */
+.image-frame {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.btn-terminate {
+  margin-top: 2rem;
+  background-color: var(--white);
+  color: var(--status-solved);
+}
+
+.btn-terminate:hover {
+  background-color: #f0f0f0;
+}
+
+/* Detail - Desktop layout */
+@media (min-width: 768px) {
+  .ticket-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.5rem;
+    row-gap: 1rem;
+    align-items: start;
+    grid-auto-flow: dense;
+  }
+
+  .item-left { grid-column: 1; }
+  .item-right { grid-column: 2; }
+
+  .image-area {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    height: 100%;
+  }
+
+  .image-frame { height: 100%; }
+  .image-img { position: absolute; inset: 0; }
+
+  .image-area + .item-right {
+    grid-row: 5;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-row-split { flex-direction: column; }
+}
+
+/* --- TABUĽKY (Tickets Modules) --- */
+
+/* 1. Globálne nastavenia tabuľky (Kostra) */
+.table-wrapper {
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+  border-radius: 12px;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  min-width: 100%;
+  font-size: 0.95rem;
+}
+
+/* Hlavička - globálna */
+.custom-table thead th {
+  background-color: var(--module-calendar);
+  color: var(--white);
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  text-align: left;
+  border-right: 2px solid var(--column-border);
+  white-space: nowrap;
+}
+
+.custom-table thead th:last-child {
+  border-right: none;
+}
+
+/* Riadky a hover - globálne */
+.custom-table tbody tr {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.custom-table tbody tr:nth-child(even) { background-color: var(--table-row-dark); }
+.custom-table tbody tr:nth-child(odd) { background-color: var(--table-row-light); }
+
+.custom-table tbody tr:hover {
+  background-color: lightgray; 
+  cursor: default;
+}
+
+/* Bunky - globálne */
+.custom-table tbody td {
+  padding: 0.8rem 1rem;
+  vertical-align: top;
+  border-right: 2px solid var(--column-border);
+  color: var(--text-primary);
+}
+
+.custom-table tbody td:last-child {
+  border-right: none;
+}
+
+/* Zaoblenie rohov tabuľky */
+.custom-table thead tr:first-child th:first-child { border-top-left-radius: 12px; }
+.custom-table thead tr:first-child th:last-child { border-top-right-radius: 12px; }
+.custom-table tbody tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+.custom-table tbody tr:last-child td:last-child { border-bottom-right-radius: 12px; }
+
+
+/* --- 2. Špecifiká pre TICKETY (.table-tickets) --- */
+
+/* 1. stĺpec – ID ticketu (Tučné) */
+.custom-table.table-tickets tbody td:nth-child(1) {
+  color: var(--text-primary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 2., 3. a 4. stĺpec – Detaily (Sivý text) */
+.custom-table.table-tickets tbody td:nth-child(2),
+.custom-table.table-tickets tbody td:nth-child(3),
+.custom-table.table-tickets tbody td:nth-child(4) {
+  color: var(--text-secondary);
+}
+
+
+/* --- 3. Stavy (Status labels) --- */
+.custom-table tbody td.status-new { 
+  color: var(--status-new); 
+  font-weight: 600; 
+}
+
+.custom-table tbody td.status-open { 
+  color: var(--status-open); 
+  font-weight: 600; 
+}
+
+.custom-table tbody td.status-solved { 
+  color: var(--status-solved); 
+  font-weight: 600; 
+}
+
+
+/* --- 4. Responzívna tabuľka (Karty na mobile) --- */
+@media (max-width: 768px) {
+  
+  .custom-table thead { display: none; }
+
+  .custom-table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    color: var(--text-primary);
+    background-color: var(--white);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .custom-table tbody tr:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  /* Farby kariet podľa stavu */
+  .custom-table tbody tr:has(.status-new) { background-color: var(--status-new); }
+  .custom-table tbody tr:has(.status-open) { background-color: var(--status-open); }
+  .custom-table tbody tr:has(.status-solved) { background-color: var(--status-solved); }
+
+  /* Štýlovanie buniek v karte */
+  .custom-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.75rem 0;
+    white-space: normal;
+    text-align: right;
+  }
+  
+  /* Reset farieb pre mobil */
+  .custom-table.table-tickets tbody td {
+      color: inherit; 
+  }
+
+  .custom-table tbody td:last-child {
+    border-bottom: none;
+    font-weight: 900;
+    font-size: 1.1rem;
+  }
+
+  .custom-table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    margin-right: 1rem;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Vynútenie bieleho textu na farebných kartách */
+  .custom-table tbody tr:has(.status-new) td,
+  .custom-table tbody tr:has(.status-open) td,
+  .custom-table tbody tr:has(.status-solved) td,
+  .custom-table tbody tr:has(.status-new) .status-new,
+  .custom-table tbody tr:has(.status-open) .status-open {
+    color: var(--white) !important;
+  }
+}
+
+/* --- 5. Špecifické tabuľky (Open, New, Solved) --- */
+
+/* OPEN TICKETS */
+.custom-table.table-open-tickets thead th {
+    background-color: var(--status-open);
+    white-space: normal;
+    vertical-align: bottom;
+}
+
+.custom-table.table-open-tickets tbody td:nth-child(1) {
+    font-weight: 600;
+    white-space: nowrap;
+}
+.custom-table.table-open-tickets tbody td:nth-child(2),
+.custom-table.table-open-tickets tbody td:nth-child(3),
+.custom-table.table-open-tickets tbody td:nth-child(4),
+.custom-table.table-open-tickets tbody td:nth-child(5) {
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .custom-table.table-open-tickets tbody td { color: inherit; }
+}
+
+/* NEW TICKETS */
+.custom-table.table-new-tickets thead th {
+    background-color: var(--status-new);
+    white-space: normal;
+    vertical-align: bottom;
+}
+
+.custom-table.table-new-tickets tbody td:nth-child(1) {
+    font-weight: 600;
+    white-space: nowrap;
+}
+.custom-table.table-new-tickets tbody td:nth-child(2),
+.custom-table.table-new-tickets tbody td:nth-child(3),
+.custom-table.table-new-tickets tbody td:nth-child(4),
+.custom-table.table-new-tickets tbody td:nth-child(5) {
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .custom-table.table-new-tickets tbody td { color: inherit; }
+}
+
+/* SOLVED TICKETS */
+.custom-table.table-solved-tickets thead th {
+    background-color: var(--status-solved);
+    white-space: normal;
+    vertical-align: bottom;
+}
+
+.custom-table.table-solved-tickets tbody td:nth-child(1) {
+    font-weight: 600;
+    white-space: nowrap;
+}
+.custom-table.table-solved-tickets tbody td:nth-child(2),
+.custom-table.table-solved-tickets tbody td:nth-child(3),
+.custom-table.table-solved-tickets tbody td:nth-child(4),
+.custom-table.table-solved-tickets tbody td:nth-child(5) {
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .custom-table.table-solved-tickets tbody td { color: inherit; }
+}
+
+/* --- Pätička --- */
+footer {
+  height: 20px;
 }
