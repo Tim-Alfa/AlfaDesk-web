@@ -19,18 +19,19 @@
     <span class="logo-text">AlfaDesk</span>
   </div>
 
-  <div class="navbar-center">
+<div class="navbar-center" onclick="showSection('section-all-tickets')" style="cursor: pointer;">
     DOMOV
-  </div>
+</div>
 
   <div class="navbar-right">
     <span class="user-role">technik</span>
     <span class="user-name">Meno Pracovníka</span>
 
-    <div class="notification">
-      <img src="images\bell_icon.png" alt="Notifikácie" class="notification-icon">
-      <span class="notification-badge">3</span>
-    </div>
+    <form action="/logout" method="POST" style="display: inline;">
+        <button type="submit" class="notification" title="Odhlásiť sa">
+            <img src="images\logout.png" alt="Odhlásiť sa" class="notification-icon">
+        </button>
+    </form>
   </div>
 
 </nav>

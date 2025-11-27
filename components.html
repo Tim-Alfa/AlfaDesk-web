@@ -13,6 +13,10 @@
 
 <nav class="navbar-container">
 
+    <!-- <div class="navbar-center" onclick="showSection('section-all-tickets')" style="cursor: pointer;">
+    DOMOV
+    </div> -->
+
   <div class="navbar-left">
     <img src="images\AlfaDesk_logo_nav.png" alt="Logo" class="logo">
     <span class="logo-text">AlfaDesk</span>
@@ -26,10 +30,16 @@
     <span class="user-role">užívateľ</span>
     <span class="user-name">Meno Pracovníka</span>
 
-    <div class="notification">
+    <form action="/logout" method="POST" style="display: inline;">
+        <button type="submit" class="notification" title="Odhlásiť sa">
+            <img src="images\logout.png" alt="Odhlásiť sa" class="notification-icon">
+        </button>
+    </form>
+
+    <!-- <div class="notification">
       <img src="images\bell_icon.png" alt="Notifikácie" class="notification-icon">
       <span class="notification-badge">3</span>
-    </div>
+    </div> -->
   </div>
 
 </nav>
