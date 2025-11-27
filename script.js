@@ -69,12 +69,6 @@ $(document).ready(function() {
         });
     }
 
-    // --- NAVIGÁCIA (aby fungovalo menu) ---
-    window.showSection = function(sectionId) {
-        $('.content-section').hide();
-        $('#' + sectionId).show();
-    };
-
 
     // Login presmerovanie
     $(document).ready(function() {
@@ -114,6 +108,68 @@ $(document).ready(function() {
         });
 
     });
+
+    // --- Funkcia navigácie ---
+    window.showSection = function() {
+        // Získanie názvu stránky
+        const path = window.location.pathname;
+        const pageName = path.substring(path.lastIndexOf('/') + 1);
+
+        // Skrytie všetkých sekcií
+        $('.content-section').hide();
+
+        // =========================================================
+        // === 1. Správanie pre admin.html ===
+        // =========================================================
+        if (pageName === 'admin.html') {
+            // Zobrazenie viacerých sekcií naraz
+            for (let i = 0; i < arguments.length; i++) {
+                $('#' + arguments[i]).show(); 
+            }
+        } 
+        
+        // =========================================================
+        // === 2. Správanie pre technician.html ===
+        // =========================================================
+        else if (pageName === 'technician.html' || pageName === 'user.html' && arguments.length > 0) {
+            const sectionId = arguments[0];
+
+            // Zobrazenie vybranej sekcie
+            $('#' + sectionId).show();
+
+            // Reset zobrazenia dlaždíc
+            $('.tiles-grid').hide(); 
+
+            // Zoznam sekcií bez dlaždíc
+            const hideTilesFor = [
+                'section-create-ticket',
+                'section-manage-ticket',
+                'section-finish-ticket',
+                'section-solved-detail'
+            ];
+            
+            // Zobrazenie dlaždíc pre povolené sekcie
+            if (hideTilesFor.indexOf(sectionId) === -1) {
+                $('.tiles-grid').show(); 
+            }
+        }
+    };
+
+
+    // --- Inicializácia po načítaní ---
+    $(document).ready(function() {
+        const path = window.location.pathname;
+        const pageName = path.substring(path.lastIndexOf('/') + 1);
+
+        if (pageName === 'admin.html') {
+            // Predvolené zobrazenie pre Admina
+            showSection('section-main-dashboard');
+        } else if (pageName === 'technician.html') {
+            // Predvolené zobrazenie pre Technika
+            showSection('section-all-tickets'); 
+        }
+    });
+    
 
 });
 
