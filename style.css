@@ -800,6 +800,91 @@ a {
   transform: scale(0.98);
 }
 
+/* --- Tabuľka prehľad užívateľov --- */
+.custom-table.table-users thead th {
+    background-color: var(--module-users);
+}
+
+.td-center {
+    text-align: center;
+}
+
+.action-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.action-icon:hover {
+    transform: scale(1.2);
+}
+
+.ticket-card.mode-add-user {
+      background-color: var(--status-text-green);
+  }
+
+@media (max-width: 768px) {
+    .custom-table thead { display: none; }
+    
+    .custom-table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        background-color: var(--white);
+    }
+    
+    .custom-table.table-users tbody tr {
+        background-color: var(--module-users);
+        color: var(--white);
+    }
+
+    .custom-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding: 0.75rem 0;
+        text-align: right;
+    }
+
+    .custom-table.table-users tbody td {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        color: var(--white);
+    }
+    
+    .custom-table tbody td:last-child { border-bottom: none; }
+
+    .custom-table tbody td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        margin-right: 1rem;
+        text-align: left;
+        color: var(--text-secondary);
+    }
+
+    .custom-table.table-users tbody td::before {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .custom-table.table-users .action-icon {
+        filter: brightness(0) invert(1);
+    }
+
+    .td-center {
+        text-align: right; 
+    }
+
+    .ticket-card.mode-add-user {
+      background-color: var(--status-text-green);
+    }
+}
+
 /* --- Pätička --- */
 footer {
   height: 20px;

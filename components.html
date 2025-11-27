@@ -287,6 +287,66 @@
     </form>
 </section>
 
+<section id="section-create-user" class="page-centered-section">
+
+    <form id="createUserForm" method="POST" action="/api/vytvorit-uzivatela">
+
+        <div class="ticket-card mode-add-user">
+            <h2 class="ticket-title">Údaje užívateľa</h2>
+
+            <div class="field-group">
+                <label class="field-label">Titul</label>
+                <input type="text" class="input-basic" name="titul" id="titul">
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Meno</label>
+                <input type="text" class="input-basic" name="meno" id="meno" required>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Priezvisko</label>
+                <input type="text" class="input-basic" name="priezvisko" id="priezvisko" required>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Rola</label>
+                <div class="select-wrapper">
+                    <select class="input-select" name="rola" id="rola" required>
+                        <option value="">Vyberte rolu...</option>
+                        <option value="uzivatel">Užívateľ</option>
+                        <option value="technik">Technik</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Osobné číslo</label>
+                <input type="text" class="input-basic" name="osobne_cislo" id="osobne_cislo" required>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Telefónne číslo</label>
+                <input type="tel" class="input-basic" name="telefon" id="telefon">
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Email</label>
+                <input type="email" class="input-basic" name="email" id="email" required>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Heslo</label>
+                <input type="password" class="input-basic" name="heslo" id="heslo" required>
+            </div>
+
+            <button class="submit-btn" type="submit">Uložiť údaje</button>
+
+        </div>
+    </form>
+</section>
+
 <section class="page-centered-section">
 
     <form method="POST" action="/api/ukoncit-ticket" enctype="multipart/form-data">
@@ -912,6 +972,154 @@
         </tbody>
     </table>
 </div>
+
+<section id="section-all-users" class="table-wrapper">
+    <table class="custom-table table-users">
+            <thead>
+                <tr>
+                    <th>Osobné číslo</th>
+                    <th>Meno</th>
+                    <th>Priezvisko</th>
+                    <th>Rola</th>
+                    <th style="text-align: center;">Upraviť užívateľa</th>
+                    <th style="text-align: center;">Zmazať užívateľa</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td data-label="Osobné číslo">1025487963</td>
+                    <td data-label="Meno">Jozef</td>
+                    <td data-label="Priezvisko">Novák</td>
+                    <td data-label="Rola"><strong>Admin</strong></td>
+                    <td data-label="Upraviť užívateľa" class="td-center">
+                        <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editUser('1025487963', 'Jozef Novák')">
+                    </td>
+                    <td data-label="Zmazať užívateľa" class="td-center">
+                        <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteUser('1025487963', 'Jozef Novák')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-label="Osobné číslo">2258741102</td>
+                    <td data-label="Meno">Mária</td>
+                    <td data-label="Priezvisko">Kováčová</td>
+                    <td data-label="Rola">Technik</td>
+                    <td data-label="Upraviť užívateľa" class="td-center">
+                        <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editUser('2258741102', 'Mária Kováčová')">
+                    </td>
+                    <td data-label="Zmazať užívateľa" class="td-center">
+                        <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteUser('2258741102', 'Mária Kováčová')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-label="Osobné číslo">9988774455</td>
+                    <td data-label="Meno">Peter</td>
+                    <td data-label="Priezvisko">Varga</td>
+                    <td data-label="Rola">Užívateľ</td>
+                    <td data-label="Upraviť užívateľa" class="td-center">
+                        <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editUser('9988774455', 'Peter Varga')">
+                    </td>
+                    <td data-label="Zmazať užívateľa" class="td-center">
+                        <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteUser('9988774455', 'Peter Varga')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-label="Osobné číslo">1122334455</td>
+                    <td data-label="Meno">Anna</td>
+                    <td data-label="Priezvisko">Modrá</td>
+                    <td data-label="Rola">Užívateľ</td>
+                    <td data-label="Upraviť užívateľa" class="td-center">
+                        <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editUser('1122334455', 'Anna Modrá')">
+                    </td>
+                    <td data-label="Zmazať užívateľa" class="td-center">
+                        <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteUser('1122334455', 'Anna Modrá')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-label="Osobné číslo">8855221144</td>
+                    <td data-label="Meno">Tomáš</td>
+                    <td data-label="Priezvisko">Horváth</td>
+                    <td data-label="Rola">Technik</td>
+                    <td data-label="Upraviť užívateľa" class="td-center">
+                        <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editUser('8855221144', 'Tomáš Horváth')">
+                    </td>
+                    <td data-label="Zmazať užívateľa" class="td-center">
+                        <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteUser('8855221144', 'Tomáš Horváth')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-label="Osobné číslo">7744112255</td>
+                    <td data-label="Meno">Lucia</td>
+                    <td data-label="Priezvisko">Veselá</td>
+                    <td data-label="Rola">Užívateľ</td>
+                    <td data-label="Upraviť užívateľa" class="td-center">
+                        <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editUser('7744112255', 'Lucia Veselá')">
+                    </td>
+                    <td data-label="Zmazať užívateľa" class="td-center">
+                        <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteUser('7744112255', 'Lucia Veselá')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-label="Osobné číslo">3366998877</td>
+                    <td data-label="Meno">Martin</td>
+                    <td data-label="Priezvisko">Kráľ</td>
+                    <td data-label="Rola"><strong>Admin</strong></td>
+                    <td data-label="Upraviť užívateľa" class="td-center">
+                        <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editUser('3366998877', 'Martin Kráľ')">
+                    </td>
+                    <td data-label="Zmazať užívateľa" class="td-center">
+                        <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteUser('3366998877', 'Martin Kráľ')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-label="Osobné číslo">4455667788</td>
+                    <td data-label="Meno">Eva</td>
+                    <td data-label="Priezvisko">Bystrá</td>
+                    <td data-label="Rola">Užívateľ</td>
+                    <td data-label="Upraviť užívateľa" class="td-center">
+                        <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editUser('4455667788', 'Eva Bystrá')">
+                    </td>
+                    <td data-label="Zmazať užívateľa" class="td-center">
+                        <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteUser('4455667788', 'Eva Bystrá')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-label="Osobné číslo">1234567890</td>
+                    <td data-label="Meno">Filip</td>
+                    <td data-label="Priezvisko">Nagy</td>
+                    <td data-label="Rola">Technik</td>
+                    <td data-label="Upraviť užívateľa" class="td-center">
+                        <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editUser('1234567890', 'Filip Nagy')">
+                    </td>
+                    <td data-label="Zmazať užívateľa" class="td-center">
+                        <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteUser('1234567890', 'Filip Nagy')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-label="Osobné číslo">0987654321</td>
+                    <td data-label="Meno">Zuzana</td>
+                    <td data-label="Priezvisko">Malá</td>
+                    <td data-label="Rola">Užívateľ</td>
+                    <td data-label="Upraviť užívateľa" class="td-center">
+                        <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editUser('0987654321', 'Zuzana Malá')">
+                    </td>
+                    <td data-label="Zmazať užívateľa" class="td-center">
+                        <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteUser('0987654321', 'Zuzana Malá')">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+</section>
 
 </body>
 
