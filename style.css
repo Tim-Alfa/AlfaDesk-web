@@ -520,7 +520,7 @@ a {
 
 /* Hlavička - globálna */
 .custom-table thead th {
-  background-color: var(--module-calendar);
+  background-color: var(--bg-nav);
   color: var(--white);
   padding: 0.9rem 1rem;
   font-weight: 600;
@@ -865,7 +865,7 @@ a {
         font-weight: 600;
         margin-right: 1rem;
         text-align: left;
-        color: var(--text-secondary);
+        color: var(--white);
     }
 
     .custom-table.table-users tbody td::before {
@@ -883,6 +883,143 @@ a {
     .ticket-card.mode-add-user {
       background-color: var(--status-text-green);
     }
+}
+
+/* --- Všetky záznamy (História/Logy) --- */
+
+.custom-table.table-records thead th {
+    background-color: var(--bg-nav);
+}
+.custom-table.table-records tbody td:nth-child(1) {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    
+    .custom-table.table-records tbody tr {
+        background-color: var(--bg-nav);
+        color: var(--white);
+    }
+
+    .custom-table.table-records tbody td {
+        color: var(--white);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .custom-table.table-records tbody td::before {
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* --- Tabuľka: HW/SW Záznamy --- */
+
+.custom-table.table-hwsw-records thead th {
+    background-color: var(--module-hwsw);
+}
+
+.custom-table.table-hwsw-records tbody td:nth-child(1) {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    
+    .custom-table.table-hwsw-records tbody tr {
+        background-color: var(--module-hwsw);
+        color: var(--white);
+    }
+
+    .custom-table.table-hwsw-records tbody td {
+        color: var(--white);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .custom-table.table-hwsw-records tbody td::before {
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* --- Tabuľka: SW Management (section-all-sw-managment) --- */
+
+.custom-table.table-sw-management thead th {
+    background-color: var(--module-sw); 
+    vertical-align: middle;
+}
+
+.custom-table.table-sw-management tbody td:nth-child(1) {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    
+    .custom-table.table-sw-management tbody tr {
+        background-color: var(--module-sw);
+        color: var(--white);
+    }
+
+    .custom-table.table-sw-management tbody td {
+        color: var(--white);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .custom-table.table-sw-management .text-muted {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .custom-table.table-sw-management tbody td::before {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .custom-table.table-sw-management .action-icon {
+        filter: brightness(0) invert(1);
+    }
+}
+
+/* --- Tabuľka: HW Management (section-hw-management) --- */
+
+.custom-table.table-hw-management thead th {
+    background-color: var(--module-hw);
+    vertical-align: middle;
+}
+
+.custom-table.table-hw-management tbody td:nth-child(1) {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    
+    .custom-table.table-hw-management tbody tr {
+        background-color: var(--module-hw);
+        color: var(--white);
+    }
+
+    .custom-table.table-hw-management tbody td {
+        color: var(--white);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .custom-table.table-hw-management .text-muted {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .custom-table.table-hw-management tbody td::before {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .custom-table.table-hw-management .action-icon {
+        filter: brightness(0) invert(1);
+    }
+}
+
+/* --- Špecifické farby pre formuláre HW a SW --- */
+
+.ticket-card.mode-sw-equipment {
+    background-color: var(--module-sw);
+}
+
+.ticket-card.mode-hw-equipment {
+    background-color: var(--module-hw);
 }
 
 /* --- Pätička --- */
