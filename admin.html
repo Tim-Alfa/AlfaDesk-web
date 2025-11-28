@@ -19,7 +19,7 @@
     <span class="logo-text">AlfaDesk</span>
   </div>
 
-<div class="navbar-center" onclick="showSection('section-main-dashboard')" style="cursor: pointer;">
+<div class="navbar-center" onclick="showSection('section-main-dashboard', 'section-all-records')" style="cursor: pointer;">
     DOMOV
 </div>
 
@@ -48,7 +48,7 @@
       </div>
     </a>
 
-    <a href="javascript:void(0)" class="tile-container module-hwsw" onclick="showSection('section-hwsw-sub-dashboard')">
+    <a href="javascript:void(0)" class="tile-container module-hwsw" onclick="showSection('section-hwsw-sub-dashboard', 'section-all-hwsw-records')">
       <div class="tile-content-text">
         Správa HW/SW
       </div>
@@ -81,7 +81,7 @@
 <section id="section-user-sub-dashboard" class="content-section section-ticket-sub-dashboard" style="display:none;">
   <div class="tiles-grid">
 
-    <a href="javascript:void(0)" class="tile-container module-users" onclick="showSection('section-user-sub-dashboard')">
+    <a href="javascript:void(0)" class="tile-container module-users" onclick="showSection('section-user-sub-dashboard', 'section-all-users')">
       <div class="tile-content-text">
         Správa užívateľov
       </div>
@@ -105,7 +105,7 @@
 <section id="section-hwsw-sub-dashboard" class="content-section section-ticket-sub-dashboard" style="display:none;">
   <div class="tiles-grid">
 
-    <a href="javascript:void(0)" class="tile-container module-hwsw" onclick="showSection('section-hwsw-sub-dashboard')">
+    <a href="javascript:void(0)" class="tile-container module-hwsw" onclick="showSection('section-hwsw-sub-dashboard', 'section-all-hwsw-records')">
       <div class="tile-content-text">
         Správa HW/SW
       </div>
@@ -115,7 +115,7 @@
     </a>
 
 
-    <a href="javascript:void(0)" class="tile-container module-sw" onclick="showSection('section-manage-sw')">
+    <a href="javascript:void(0)" class="tile-container module-sw" onclick="showSection('section-hwsw-sub-dashboard', 'section-sw-management')">
       <div class="tile-content-text">
         Správa SW
       </div>
@@ -133,7 +133,7 @@
       </div>
     </a>
 
-    <a href="javascript:void(0)" class="tile-container module-hw" onclick="showSection('section-manage-hw')">
+    <a href="javascript:void(0)" class="tile-container module-hw" onclick="showSection('section-hwsw-sub-dashboard', 'section-hw-management')">
       <div class="tile-content-text">
         Správa HW
       </div>
@@ -147,7 +147,7 @@
         Pridať HW
       </div>
       <div class="tile-circle ml-auto">
-        <span class="tile-circle-content">2</span>
+        <span class="tile-circle-content">+</span>
       </div>
     </a>
 
@@ -724,6 +724,52 @@
     </form>
 </section>
 
+<section id="section-add-sw" class="content-section page-centered-section">
+
+    <form id="createSwForm" method="POST" action="/api/vytvorit-sw">
+
+        <div class="ticket-card mode-sw-equipment">
+            <h2 class="ticket-title">Údaje SW vybavenia</h2>
+
+            <div class="field-group">
+                <label class="field-label">Názov</label>
+                <input type="text" class="input-basic" name="nazov_sw" id="nazov_sw" required>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">NH riešenia závady</label>
+                <input type="number" step="0.1" class="input-basic" name="nh_riesenia_sw" id="nh_riesenia_sw" required>
+            </div>
+
+            <button class="submit-btn" type="submit">Uložiť údaje</button>
+
+        </div>
+    </form>
+</section>
+
+<section id="section-add-hw" class="content-section page-centered-section">
+
+    <form id="createHwForm" method="POST" action="/api/vytvorit-hw">
+
+        <div class="ticket-card mode-hw-equipment">
+            <h2 class="ticket-title">Údaje HW vybavenia</h2>
+
+            <div class="field-group">
+                <label class="field-label">Názov</label>
+                <input type="text" class="input-basic" name="nazov_hw" id="nazov_hw" required>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">NH riešenia závady</label>
+                <input type="number" step="0.1" class="input-basic" name="nh_riesenia_hw" id="nh_riesenia_hw" required>
+            </div>
+
+            <button class="submit-btn" type="submit">Uložiť údaje</button>
+
+        </div>
+    </form>
+</section>
+
 <div id="section-all-tickets" class="content-section table-wrapper" style="display: block;">
     <table class="custom-table table-tickets">
         <thead>
@@ -1260,6 +1306,468 @@
             </tbody>
         </table>
 
+</section>
+
+<section id="section-all-records" class="content-section table-wrapper">
+
+    <table class="custom-table table-records">
+        <thead>
+            <tr>
+                <th>Dátum a čas</th>
+                <th>Záznam</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 10:42</td>
+                <td data-label="Záznam">Technik Jaroslav Smutný uzavrel tiket TKT-2025-1045 – „Obnovené pripojenie tlačiarne“.</td>
+            </tr>
+
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 10:15</td>
+                <td data-label="Záznam">Používateľ Jarmila Apatická nahlásila nový tiket TKT-2025-1048 – „PC sa nespúšťa po aktualizácii“.</td>
+            </tr>
+
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 09:50</td>
+                <td data-label="Záznam">Technik Richard Skeptický zmenila stav tiketu TKT-2025-1039 na – „Rieši sa“.</td>
+            </tr>
+
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 09:20</td>
+                <td data-label="Záznam">Admin pridal nového používateľa – Peter Hruboš (dizajnér).</td>
+            </tr>
+
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 08:55</td>
+                <td data-label="Záznam">Technik Jaroslav Smutný upravil pracovný kalenár na deň – 25.10.2025.</td>
+            </tr>
+
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 08:30</td>
+                <td data-label="Záznam">Admin pridal nový HW záznam – “tablet”.</td>
+            </tr>
+
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 08:15</td>
+                <td data-label="Záznam">Technik Richard Skeptický pridal poznámku k tiketu TKT-2025-1035 – „Čakám na dodanie náhradného dielu“.</td>
+            </tr>
+
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 07:55</td>
+                <td data-label="Záznam">Systém automaticky vykonal dennú zálohu databázy používateľov.</td>
+            </tr>
+
+            <tr>
+                <td data-label="Dátum a čas">22.10.2025, 16:45</td>
+                <td data-label="Záznam">Používateľ Karol Novák nahlásil nový tiket TKT-2025-1047 – „Nefunkčná VPN“.</td>
+            </tr>
+
+            <tr>
+                <td data-label="Dátum a čas">22.10.2025, 16:30</td>
+                <td data-label="Záznam">Admin aktualizoval verziu softvéru „Office Package“ na v25.1 pre oddelenie logistiky.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+
+<section id="section-all-hwsw-records" class="content-section table-wrapper">
+
+    <table class="custom-table table-records">
+        <table class="custom-table table-hwsw-records">
+            <thead>
+                <tr>
+                    <th>Dátum a čas</th>
+                    <th>Záznam</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Dátum a čas">24.10.2025, 14:33</td>
+                    <td data-label="Záznam">Bolo pridané zariadenie do kategórie HW – Tablet s predpokladaným časom riešenia závady 0,5 NH</td>
+                </tr>
+
+                <tr>
+                    <td data-label="Dátum a čas">24.10.2025, 13:11</td>
+                    <td data-label="Záznam">Pri SW vybavení OS Windows došlo k prepočtu normohodín – aktuálna hodnota 1,8 NH</td>
+                </tr>
+
+                <tr>
+                    <td data-label="Dátum a čas">24.10.2025, 12:45</td>
+                    <td data-label="Záznam">Bolo pridané vybavenie do kategórie SW – Komunikačné nástroje s predpokladaným časom riešenia závady 0,25 NH</td>
+                </tr>
+
+                <tr>
+                    <td data-label="Dátum a čas">24.10.2025, 10:26</td>
+                    <td data-label="Záznam">Pri HW zariadení Server došlo k prepočtu normohodín – aktuálna hodnota 3,2 NH</td>
+                </tr>
+
+                <tr>
+                    <td data-label="Dátum a čas">24.10.2025, 09:55</td>
+                    <td data-label="Záznam">Pri HW zariadení Monitor došlo k úprave normohodín – aktuálna hodnota 0,6 NH</td>
+                </tr>
+
+                <tr>
+                    <td data-label="Dátum a čas">24.10.2025, 08:10</td>
+                    <td data-label="Záznam">Bolo odstránené zariadenie HW – Ručný skener</td>
+                </tr>
+
+                <tr>
+                    <td data-label="Dátum a čas">23.10.2025, 16:45</td>
+                    <td data-label="Záznam">Bolo pridané zariadenie do kategórie HW – Dokovacia stanica s predpokladaným časom riešenia závady 0,3 NH</td>
+                </tr>
+
+                <tr>
+                    <td data-label="Dátum a čas">23.10.2025, 15:20</td>
+                    <td data-label="Záznam">Pri SW vybavení Antivírusový balík došlo k prepočtu normohodín – aktuálna hodnota 0,4 NH</td>
+                </tr>
+
+                <tr>
+                    <td data-label="Dátum a čas">23.10.2025, 14:00</td>
+                    <td data-label="Záznam">Bolo odstránené vybavenie SW – Starý účtovný systém v2 (End of Life)</td>
+                </tr>
+
+                <tr>
+                    <td data-label="Dátum a čas">23.10.2025, 11:30</td>
+                    <td data-label="Záznam">Pri HW zariadení Projektor Epson došlo k úprave popisu kategórie.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+<section id="section-sw-management" class="content-section table-wrapper">
+    <table class="custom-table table-sw-management">
+        <thead>
+            <tr>
+                <th>Názov SW</th>
+                <th>NH riešenia závady</th>
+                <th>Priemerné NH riešenia závady</th>
+                <th style="text-align: center;">Upraviť NH</th>
+                <th style="text-align: center;">Použiť priemerné NH</th>
+                <th style="text-align: center;">Odstrániť vybavenie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Názov SW">OS</td>
+                <td data-label="NH riešenia závady">1,80</td>
+                <td data-label="Priemerné NH riešenia závady">1,75</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('OS')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('OS')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteSW('OS')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov SW">Komunikačné vybavenie</td>
+                <td data-label="NH riešenia závady">0,20</td>
+                <td data-label="Priemerné NH riešenia závady">0,36</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Komunikačné vybavenie')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Komunikačné vybavenie')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteSW('Komunikačné vybavenie')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov SW">SAP</td>
+                <td data-label="NH riešenia závady">1,00</td>
+                <td data-label="Priemerné NH riešenia závady" class="text-muted italic">nedostupné</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('SAP')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('SAP')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteSW('SAP')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov SW">Email</td>
+                <td data-label="NH riešenia závady">0,10</td>
+                <td data-label="Priemerné NH riešenia závady">0,22</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Email')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Email')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteSW('Email')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov SW">Grafické aplikácie</td>
+                <td data-label="NH riešenia závady">0,25</td>
+                <td data-label="Priemerné NH riešenia závady">0,20</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Grafické aplikácie')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Grafické aplikácie')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteSW('Grafické aplikácie')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov SW">Cloud</td>
+                <td data-label="NH riešenia závady">0,50</td>
+                <td data-label="Priemerné NH riešenia závady">0,65</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Cloud')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Cloud')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteSW('Cloud')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov SW">Antivírusový SW</td>
+                <td data-label="NH riešenia závady">0,30</td>
+                <td data-label="Priemerné NH riešenia závady">0,28</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Antivírusový SW')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Antivírusový SW')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteSW('Antivírusový SW')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov SW">VPN Klient</td>
+                <td data-label="NH riešenia závady">0,45</td>
+                <td data-label="Priemerné NH riešenia závady">0,50</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('VPN Klient')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('VPN Klient')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteSW('VPN Klient')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov SW">MS Office</td>
+                <td data-label="NH riešenia závady">0,60</td>
+                <td data-label="Priemerné NH riešenia závady">0,55</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('MS Office')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('MS Office')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteSW('MS Office')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov SW">Archivačné nástroje</td>
+                <td data-label="NH riešenia závady">0,15</td>
+                <td data-label="Priemerné NH riešenia závady">0,15</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Archivačné nástroje')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Archivačné nástroje')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteSW('Archivačné nástroje')">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="section-hw-management" class="content-section table-wrapper">
+    <table class="custom-table table-hw-management">
+        <thead>
+            <tr>
+                <th>Názov HW</th>
+                <th>NH riešenia závady</th>
+                <th>Priemerné NH riešenia závady</th>
+                <th style="text-align: center;">Upraviť NH</th>
+                <th style="text-align: center;">Použiť priemerné NH</th>
+                <th style="text-align: center;">Odstrániť vybavenie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Názov HW">PC</td>
+                <td data-label="NH riešenia závady">1,80</td>
+                <td data-label="Priemerné NH riešenia závady">1,75</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('PC')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('PC')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteHW('PC')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov HW">Monitor</td>
+                <td data-label="NH riešenia závady">0,20</td>
+                <td data-label="Priemerné NH riešenia závady">0,36</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Monitor')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Monitor')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteHW('Monitor')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov HW">Tablet</td>
+                <td data-label="NH riešenia závady">1,00</td>
+                <td data-label="Priemerné NH riešenia závady" class="text-muted italic">nedostupné</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Tablet')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Tablet')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteHW('Tablet')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov HW">Skener</td>
+                <td data-label="NH riešenia závady">0,10</td>
+                <td data-label="Priemerné NH riešenia závady">0,22</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Skener')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Skener')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteHW('Skener')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov HW">Klávesnica</td>
+                <td data-label="NH riešenia závady">0,25</td>
+                <td data-label="Priemerné NH riešenia závady">0,20</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Klávesnica')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Klávesnica')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteHW('Klávesnica')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov HW">Kamera</td>
+                <td data-label="NH riešenia závady">0,50</td>
+                <td data-label="Priemerné NH riešenia závady">0,65</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Kamera')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Kamera')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteHW('Kamera')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov HW">Tlačiareň</td>
+                <td data-label="NH riešenia závady">0,40</td>
+                <td data-label="Priemerné NH riešenia závady">0,45</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Tlačiareň')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Tlačiareň')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteHW('Tlačiareň')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov HW">Myš</td>
+                <td data-label="NH riešenia závady">0,10</td>
+                <td data-label="Priemerné NH riešenia závady">0,12</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Myš')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Myš')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteHW('Myš')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov HW">Dokovacia stanica</td>
+                <td data-label="NH riešenia závady">0,30</td>
+                <td data-label="Priemerné NH riešenia závady">0,25</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Dokovacia stanica')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Dokovacia stanica')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteHW('Dokovacia stanica')">
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="Názov HW">Slúchadlá</td>
+                <td data-label="NH riešenia závady">0,15</td>
+                <td data-label="Priemerné NH riešenia závady">0,18</td>
+                <td data-label="Upraviť NH" class="td-center">
+                    <img src="images/pencil.png" alt="Upraviť" class="action-icon" onclick="editNH('Slúchadlá')">
+                </td>
+                <td data-label="Použiť priemerné NH" class="td-center">
+                    <img src="images/pencil.png" alt="Použiť priemer" class="action-icon" onclick="useAverageNH('Slúchadlá')">
+                </td>
+                <td data-label="Odstrániť vybavenie" class="td-center">
+                    <img src="images/delete.png" alt="Zmazať" class="action-icon" onclick="deleteHW('Slúchadlá')">
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
 <script src="script.js"></script>
