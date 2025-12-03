@@ -15,69 +15,72 @@
 <nav class="navbar-container">
 
   <div class="navbar-left">
-    <img src="images\AlfaDesk_logo_nav.png" alt="Logo" class="logo">
+    <img src="images/AlfaDesk_logo_nav.png" alt="Logo" class="logo">
     <span class="logo-text">AlfaDesk</span>
   </div>
 
-<div class="navbar-center" onclick="showSection('section-all-tickets')" style="cursor: pointer;">
-    DOMOV
-</div>
+  <div class="navbar-center cursor-pointer" onclick="showSection('section-all-tickets')">
+      DOMOV
+  </div>
 
   <div class="navbar-right">
     <span class="user-role">užívateľ</span>
     <span class="user-name">Meno Pracovníka</span>
 
-    <form action="/logout" method="POST" style="display: inline;">
+    <form action="/logout" method="POST" class="d-inline">
         <button type="submit" class="notification" title="Odhlásiť sa">
-            <img src="images\logout.png" alt="Odhlásiť sa" class="notification-icon">
+            <img src="images/logout.png" alt="Odhlásiť sa" class="notification-icon">
         </button>
     </form>
   </div>
 
 </nav>
 
+<main>
 
-<div class="tiles-grid">
+<section id="section-dashboard" class="content-section" aria-label="Hlavný panel">
+    <div class="tiles-grid">
 
-  <a href="javascript:void(0)" class="tile-container ticket-new" onclick="showSection('section-create-ticket')">
-    <div class="tile-content-text">
-      Vytvoriť nový ticket
-    </div>
-    <div class="tile-circle ml-auto">
-      <span class="tile-circle-content">+</span>
-    </div>
-  </a>
+      <a href="javascript:void(0)" class="tile-container ticket-new" onclick="showSection('section-create-ticket')">
+        <div class="tile-content-text">
+          Vytvoriť nový ticket
+        </div>
+        <div class="tile-circle ml-auto">
+          <span class="tile-circle-content">+</span>
+        </div>
+      </a>
 
-  <a href="javascript:void(0)" class="tile-container ticket-new" onclick="showSection('section-new-tickets')">
-    <div class="tile-content-text">
-      Počet nových ticketov
-    </div>
-    <div class="tile-circle ml-auto">
-      <span class="tile-circle-content">10</span>
-    </div>
-  </a>
+      <a href="javascript:void(0)" class="tile-container ticket-new" onclick="showSection('section-new-tickets')">
+        <div class="tile-content-text">
+          Počet nových ticketov
+        </div>
+        <div class="tile-circle ml-auto">
+          <span class="tile-circle-content">10</span>
+        </div>
+      </a>
 
-  <a href="javascript:void(0)" class="tile-container ticket-open" onclick="showSection('section-open-tickets')">
-    <div class="tile-content-text">
-      Počet otvorených ticketov
-    </div>
-    <div class="tile-circle ml-auto">
-      <span class="tile-circle-content">10</span>
-    </div>
-  </a>
+      <a href="javascript:void(0)" class="tile-container ticket-open" onclick="showSection('section-open-tickets')">
+        <div class="tile-content-text">
+          Počet otvorených ticketov
+        </div>
+        <div class="tile-circle ml-auto">
+          <span class="tile-circle-content">10</span>
+        </div>
+      </a>
 
-  <a href="javascript:void(0)" class="tile-container ticket-solved" onclick="showSection('section-solved-tickets')">
-    <div class="tile-content-text">
-      Počet vyriešených ticketov
-    </div>
-    <div class="tile-circle ml-auto">
-      <span class="tile-circle-content">10</span>
-    </div>
-  </a>
+      <a href="javascript:void(0)" class="tile-container ticket-solved" onclick="showSection('section-solved-tickets')">
+        <div class="tile-content-text">
+          Počet vyriešených ticketov
+        </div>
+        <div class="tile-circle ml-auto">
+          <span class="tile-circle-content">10</span>
+        </div>
+      </a>
 
-</div>
+    </div>
+</section>
 
-<section id="section-create-ticket" class="content-section page-centered-section">
+<section id="section-create-ticket" class="content-section page-centered-section" aria-label="Vytvorenie ticketu">
 
     <form id="createTicketForm" method="POST" action="/api/vytvorit-ticket" enctype="multipart/form-data">
 
@@ -90,7 +93,7 @@
                 <label class="field-label">Zariadenie</label>
                 <div class="select-wrapper">
                     <select class="input-select" name="zariadenie" id="zariadenie" required>
-                        <option value="">Vyber zariadenie...</option>
+                        <option value="" disabled hidden selected>Vyber zariadenie...</option>
                         <option value="12">Dell 32 Plus (S3225QS)</option>
                         <option value="15">HP LaserJet</option>
                     </select>
@@ -112,24 +115,23 @@
                 <textarea class="input-textarea" name="popis" id="popis" required></textarea>
             </div>
             
-            <div class="field-group">
+            <!-- <div class="field-group">
                 <label class="field-label">Priložiť súbory (Obrázky)</label>
                 <input type="file" class="input-file" name="prilohy_zadavatel[]" multiple>
-            </div>
+            </div> -->
             
             <div class="field-group">
                 <label class="field-label">Predpokladaný čas odstránenia (Voliteľné)</label>
                 <input type="datetime-local" class="input-basic" name="odstranenie_predpoklad">
             </div>
 
-
-            <button class="submit-btn" type="button">Odoslať ticket</button>
+            <button class="submit-btn" type="submit">Odoslať ticket</button>
 
         </div>
     </form>
 </section>
 
-<div id="section-all-tickets" class="content-section table-wrapper" style="display: block;">
+<section id="section-all-tickets" class="content-section table-wrapper" aria-label="Zoznam všetkých ticketov">
     <table class="custom-table table-tickets">
         <thead>
             <tr>
@@ -223,9 +225,9 @@
             </tr>
         </tbody>
     </table>
-</div>
+</section>
 
-<div id="section-open-tickets" class="content-section table-wrapper">
+<section id="section-open-tickets" class="content-section table-wrapper" aria-label="Otvorené tickety">
     <table class="custom-table table-open-tickets">
         <thead>
             <tr>
@@ -321,9 +323,9 @@
             </tr>
         </tbody>
     </table>
-</div>
+</section>
 
-<div id="section-new-tickets" class="content-section table-wrapper">
+<section id="section-new-tickets" class="content-section table-wrapper" aria-label="Nové tickety">
     <table class="custom-table table-new-tickets">
         <thead>
             <tr>
@@ -418,9 +420,9 @@
             </tr>
         </tbody>
     </table>
-</div>
+</section>
 
-<div id="section-solved-tickets" class="content-section table-wrapper">
+<section id="section-solved-tickets" class="content-section table-wrapper" aria-label="Vyriešené tickety">
     <table class="custom-table table-solved-tickets">
         <thead>
             <tr>
@@ -515,12 +517,13 @@
             </tr>
         </tbody>
     </table>
-</div>
+</section>
+
+</main>
 
 <script src="script.js"></script>
-</body>
-
 <footer> 
 </footer>
+</body>
 
 </html>

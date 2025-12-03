@@ -109,64 +109,82 @@ $(document).ready(function() {
 
     });
 
-    // --- Funkcia navigácie ---
+    /* SKRIPT PRE OBSLUHU NAVIGÁCIE A ZOBRAZOVANIA SEKCIÍ */
+
     window.showSection = function() {
-        // Získanie názvu stránky
+        // 1. Zistenie aktuálnej stránky
         const path = window.location.pathname;
         const pageName = path.substring(path.lastIndexOf('/') + 1);
 
-        // Skrytie všetkých sekcií
+        // 2. Skrytie úplne všetkých sekcií (reset stavu)
+        // Toto skryje Dashboardy, Tabuľky, Formuláre... všetko s triedou .content-section
         $('.content-section').hide();
 
-        // =========================================================
-        // === 1. Správanie pre admin.html ===
-        // =========================================================
+        // 3. Logika podľa typu užívateľa (stránky)
+
+        // === ADMIN ===
         if (pageName === 'admin.html') {
-            // Zobrazenie viacerých sekcií naraz
+            // Admin môže poslať viacero ID naraz (napr. Dashboard + Tabuľka histórie)
+            // Funkcia prejde všetky argumenty a zobrazí ich
             for (let i = 0; i < arguments.length; i++) {
                 $('#' + arguments[i]).show(); 
             }
         } 
         
-        // =========================================================
-        // === 2. Správanie pre technician.html ===
-        // =========================================================
-        else if (pageName === 'technician.html' || pageName === 'user.html' && arguments.length > 0) {
-            const sectionId = arguments[0];
-
-            // Zobrazenie vybranej sekcie
-            $('#' + sectionId).show();
-
-            // Reset zobrazenia dlaždíc
-            $('.tiles-grid').hide(); 
-
-            // Zoznam sekcií bez dlaždíc
-            const hideTilesFor = [
-                'section-create-ticket',
-                'section-manage-ticket',
-                'section-finish-ticket',
-                'section-solved-detail'
-            ];
+        // === TECHNIK a UŽÍVATEĽ ===
+        else if (pageName === 'technician.html' || pageName === 'user.html') {
             
-            // Zobrazenie dlaždíc pre povolené sekcie
-            if (hideTilesFor.indexOf(sectionId) === -1) {
-                $('.tiles-grid').show(); 
+            // Získame ID sekcie, ktorú chceme zobraziť (napr. 'section-create-ticket')
+            // Ak funkcia nemá argumenty, nič sa nestane
+            if (arguments.length > 0) {
+                const sectionId = arguments[0];
+
+                // A) Vždy zobrazíme vyžiadanú sekciu (napr. tabuľku alebo formulár)
+                $('#' + sectionId).show();
+
+                // B) Rozhodneme, či má byť viditeľný aj hlavný panel s dlaždicami (Dashboard)
+                
+                // Zoznam "Detailných pohľadov" = obrazovky, kde dlaždice NECHCEME (formuláre, detaily)
+                const detailViews = [
+                    'section-create-ticket',
+                    'section-manage-ticket',
+                    'section-finish-ticket',
+                    'section-solved-detail',
+                    'section-create-user' // Pridané pre istotu, ak by to používal user
+                ];
+
+                // Ak aktuálna sekcia NIE JE v zozname detailov, zobrazíme aj Dashboard
+                if (detailViews.indexOf(sectionId) === -1) {
+                    // Pre novú HTML štruktúru: zobrazíme sekciu, ktorá obaľuje dlaždice
+                    $('#section-dashboard').show(); 
+                    
+                    // Pre starú HTML štruktúru (ak user.html ešte nemá section):
+                    $('.tiles-grid').show(); 
+                } 
+                // Ak JE v zozname detailov, Dashboard ostane skrytý (z kroku 2)
             }
         }
     };
 
 
-    // --- Inicializácia po načítaní ---
+    // --- Inicializácia po načítaní stránky ---
     $(document).ready(function() {
         const path = window.location.pathname;
         const pageName = path.substring(path.lastIndexOf('/') + 1);
 
+        // Nastavenie predvoleného pohľadu po F5 (refresh)
+        
         if (pageName === 'admin.html') {
-            // Predvolené zobrazenie pre Admina
-            showSection('section-main-dashboard');
-        } else if (pageName === 'technician.html') {
-            // Predvolené zobrazenie pre Technika
+            // Admin vidí Hlavný dashboard + Tabuľku všetkých záznamov
+            showSection('section-main-dashboard', 'section-all-records');
+        } 
+        else if (pageName === 'technician.html') {
+            // Technik vidí Dashboard (automaticky cez logiku hore) + Tabuľku všetkých ticketov
             showSection('section-all-tickets'); 
+        }
+        else if (pageName === 'user.html') {
+            // Užívateľ vidí to isté čo technik (Dashboard + Tabuľku)
+            showSection('section-all-tickets');
         }
     });
     

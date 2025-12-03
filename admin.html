@@ -15,28 +15,30 @@
 <nav class="navbar-container">
 
   <div class="navbar-left">
-    <img src="images\AlfaDesk_logo_nav.png" alt="Logo" class="logo">
+    <img src="images/AlfaDesk_logo_nav.png" alt="Logo" class="logo">
     <span class="logo-text">AlfaDesk</span>
   </div>
 
-<div class="navbar-center" onclick="showSection('section-main-dashboard', 'section-all-records')" style="cursor: pointer;">
-    DOMOV
-</div>
+  <div class="navbar-center cursor-pointer" onclick="showSection('section-main-dashboard', 'section-all-records')">
+      DOMOV
+  </div>
 
   <div class="navbar-right">
     <span class="user-role">admin</span>
     <span class="user-name">Meno Pracovníka</span>
 
-    <form action="/logout" method="POST" style="display: inline;">
+    <form action="/logout" method="POST" class="d-inline">
         <button type="submit" class="notification" title="Odhlásiť sa">
-            <img src="images\logout.png" alt="Odhlásiť sa" class="notification-icon">
+            <img src="images/logout.png" alt="Odhlásiť sa" class="notification-icon">
         </button>
     </form>
   </div>
 
 </nav>
 
-<section id="section-main-dashboard" class="content-section">
+<main>
+
+<section id="section-main-dashboard" class="content-section" aria-label="Hlavný panel">
   <div class="tiles-grid">
 
     <a href="javascript:void(0)" class="tile-container module-users" onclick="showSection('section-user-sub-dashboard', 'section-all-users')">
@@ -78,7 +80,7 @@
   </div>
 </section>
 
-<section id="section-user-sub-dashboard" class="content-section section-ticket-sub-dashboard" style="display:none;">
+<section id="section-user-sub-dashboard" class="content-section section-ticket-sub-dashboard" aria-label="Podpanel užívatelia">
   <div class="tiles-grid">
 
     <a href="javascript:void(0)" class="tile-container module-users" onclick="showSection('section-user-sub-dashboard', 'section-all-users')">
@@ -102,7 +104,7 @@
   </div>
 </section>
 
-<section id="section-hwsw-sub-dashboard" class="content-section section-ticket-sub-dashboard" style="display:none;">
+<section id="section-hwsw-sub-dashboard" class="content-section section-ticket-sub-dashboard" aria-label="Podpanel HW a SW">
   <div class="tiles-grid">
 
     <a href="javascript:void(0)" class="tile-container module-hwsw" onclick="showSection('section-hwsw-sub-dashboard', 'section-all-hwsw-records')">
@@ -154,7 +156,7 @@
   </div>
 </section>
 
-<section id="section-ticket-sub-dashboard" class="content-section section-ticket-sub-dashboard" style="display:none;">
+<section id="section-ticket-sub-dashboard" class="content-section section-ticket-sub-dashboard" aria-label="Podpanel tickety">
   <div class="tiles-grid">
 
     <a href="javascript:void(0)" class="tile-container ticket-new" onclick="showSection('section-create-ticket')">
@@ -197,7 +199,7 @@
   
 </section>
 
-<section id="section-calendar-sub-dashboard" class="content-section section-ticket-sub-dashboard" style="display:none;">
+<section id="section-calendar-sub-dashboard" class="content-section section-ticket-sub-dashboard" aria-label="Podpanel kalendár">
   <div class="tiles-grid">
 
     <a href="javascript:void(0)" class="tile-container module-calendar" onclick="showSection('section-calendar-sub-dashboard')">
@@ -208,10 +210,11 @@
           <img src="images/calendar.png" alt="Kalendár" class="tile-icon-img"> 
       </div>
     </a>
-
+  </div>
 </section>
 
-<section id="section-solved-detail" class="content-section page-centered-section">
+
+<section id="section-solved-detail" class="content-section page-centered-section" aria-label="Detail vyriešeného ticketu">
 
     <div> 
         
@@ -248,12 +251,12 @@
                     <textarea class="input-textarea" name="db_popis" readonly>Nedá sa zapnúť.</textarea>
                 </div>
 
-                <div class="grid-item item-left">
+                <!-- <div class="grid-item item-left">
                     <label class="field-label">Priložený súbor (Zadávateľ)</label>
                     <div class="static-box text-muted italic">
                         monitor.jpeg
                     </div>
-                </div>
+                </div> -->
 
                 <div class="grid-item item-left">
                     <label class="field-label">Nahlásil zamestnanec</label>
@@ -279,7 +282,7 @@
 
                 <div class="grid-item image-area">
                     <div class="image-frame">
-                         <img src="images/monitor.png" alt="Náhľad" class="image-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:var(--text-primary); font-weight:bold;\'>Bez náhľadu</span>'">
+                         <img src="" alt="Náhľad" class="image-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:var(--text-primary); font-weight:bold;\'>Bez náhľadu</span>'">
                     </div>
                 </div>
 
@@ -288,12 +291,12 @@
                     <textarea class="input-textarea" name="riesenie_popis" readonly>Poškodené tlačidlo. Monitor vymenený za nový</textarea>
                 </div>
 
-                <div class="grid-item item-right">
+                <!-- <div class="grid-item item-right">
                     <label class="field-label">Priložiť súbor (Výstup)</label>
                     <div class="static-box">
                          <a href="images/report.pdf" target="_blank" style="color: var(--text-link); text-decoration: underline;">servisny_protokol.pdf</a>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="grid-item item-right">
                     <label class="field-label">Vyriešil zamestnanec</label>
@@ -324,7 +327,7 @@
     </div>
 </section>
 
-<section id="section-manage-ticket" class="content-section page-centered-section">
+<section id="section-manage-ticket" class="content-section page-centered-section" aria-label="Správa ticketu">
 
     <form id="manageNewTicketForm" method="POST" action="/api/upravit-ticket/TKT-2025-040" enctype="multipart/form-data">
 
@@ -338,6 +341,7 @@
                 <label class="field-label">Zariadenie</label>
                 <div class="select-wrapper">
                     <select class="input-select" name="zariadenie" id="zariadenie" required>
+                        <option value="" disabled hidden>Vyberte...</option>
                         <option value="12" selected>Dell 32 Plus (S3225QS)</option>
                         <option value="15">HP LaserJet</option>
                     </select>
@@ -359,12 +363,13 @@
                 <textarea class="input-textarea" name="popis" id="popis" required>Zariadenie je pripojené, no neskenuje. Počítač ho nevidí.</textarea>
             </div>
             
-            <div class="field-group">
+            <!-- <div class="field-group">
                 <label class="field-label">Priložené súbory</label>
                 <div class="static-box">
                     <a href="images/monitor.png" target="_blank" style="color: var(--text-link); text-decoration: underline;">monitor.jpeg</a>
                 </div>
-            </div>
+            </div> -->
+            
             <div class="field-group">
                 <label class="field-label">Predpokladaný čas odstránenia (Voliteľné)</label>
                 <input type="datetime-local" class="input-basic" name="odstranenie_predpoklad" value="2025-01-24T12:00">
@@ -378,7 +383,7 @@
     </form>
 </section>
 
-<section id="section-create-ticket" class="content-section page-centered-section">
+<section id="section-create-ticket" class="content-section page-centered-section" aria-label="Vytvorenie ticketu">
 
     <form id="createTicketForm" method="POST" action="/api/vytvorit-ticket" enctype="multipart/form-data">
 
@@ -390,7 +395,7 @@
             <div class="field-group">
                 <label class="field-label">Zariadenie</label>
                 <div class="select-wrapper">
-                    <select class="input-select" name="zariadenie" id="zariadenie" required>
+                    <select class="input-select" name="zariadenie" id="zariadenie_new" required>
                         <option value="">Vyber zariadenie...</option>
                         <option value="12">Dell 32 Plus (S3225QS)</option>
                         <option value="15">HP LaserJet</option>
@@ -400,23 +405,23 @@
 
             <div class="field-group">
                 <label class="field-label">Názov zariadenia</label>
-                <input type="text" class="input-basic" name="zariadenie_nazov" id="zariadenie_nazov">
+                <input type="text" class="input-basic" name="zariadenie_nazov" id="zariadenie_nazov_new">
             </div>
 
             <div class="field-group">
                 <label class="field-label">Umiestnenie zariadenia</label>
-                <input type="text" class="input-basic" name="umiestnenie" id="umiestnenie" required>
+                <input type="text" class="input-basic" name="umiestnenie" id="umiestnenie_new" required>
             </div>
 
             <div class="field-group">
                 <label class="field-label">Popis závady</label>
-                <textarea class="input-textarea" name="popis" id="popis" required></textarea>
+                <textarea class="input-textarea" name="popis" id="popis_new" required></textarea>
             </div>
             
-            <div class="field-group">
+            <!-- <div class="field-group">
                 <label class="field-label">Priložiť súbory (Obrázky)</label>
                 <input type="file" class="input-file" name="prilohy_zadavatel[]" multiple>
-            </div>
+            </div> -->
             
             <div class="field-group">
                 <label class="field-label">Predpokladaný čas odstránenia (Voliteľné)</label>
@@ -430,7 +435,7 @@
     </form>
 </section>
 
-<section id="section-finish-ticket" class="content-section page-centered-section">
+<section id="section-finish-ticket" class="content-section page-centered-section" aria-label="Ukončenie ticketu">
 
     <form method="POST" action="/api/ukoncit-ticket" enctype="multipart/form-data">
         
@@ -467,12 +472,12 @@
                     <textarea class="input-textarea" name="db_popis" readonly>Nedá sa zapnúť.</textarea>
                 </div>
 
-                <div class="grid-item item-left">
+                <!-- <div class="grid-item item-left">
                     <label class="field-label">Priložený súbor (Zadávateľ)</label>
                     <div class="static-box text-muted italic">
                         monitor.jpeg
                     </div>
-                </div>
+                </div> -->
 
                 <div class="grid-item item-left">
                     <label class="field-label">Nahlásil zamestnanec</label>
@@ -498,7 +503,7 @@
 
                 <div class="grid-item image-area">
                     <div class="image-frame">
-                         <img src="images/monitor.png" alt="Náhľad" class="image-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:var(--text-primary); font-weight:bold;\'>Bez náhľadu</span>'">
+                         <img src="" alt="Náhľad" class="image-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:var(--text-primary); font-weight:bold;\'>Bez náhľadu</span>'">
                     </div>
                 </div>
 
@@ -507,10 +512,10 @@
                     <textarea class="input-textarea" name="popis_riesenia" placeholder="Popíšte postup opravy..."></textarea>
                 </div>
 
-                <div class="grid-item item-right">
+                <!-- <div class="grid-item item-right">
                     <label class="field-label">Priložiť súbor (Výstup)</label>
                     <input type="file" class="input-file" name="prilohy_riesitel[]">
-                </div>
+                </div> -->
 
                 <div class="grid-item item-right">
                     <label class="field-label">Vyriešil zamestnanec</label>
@@ -551,7 +556,7 @@
     </form>
 </section>
 
-<section id="section-create-user" class="content-section page-centered-section">
+<section id="section-create-user" class="content-section page-centered-section" aria-label="Vytvorenie užívateľa">
 
     <form id="createUserForm" method="POST" action="/api/vytvorit-uzivatela">
 
@@ -611,120 +616,7 @@
     </form>
 </section>
 
-<section id="section-solved-detail" class="content-section page-centered-section">
-
-    <form> 
-        
-        <input type="hidden" name="ticket_id" value="TKT-2025-003">
-
-        <div class="ticket-card mode-solved wide"> 
-            
-            <h2 class="ticket-title">Detail ticketu TKT-2025-003 (Vyriešený)</h2>
-            
-            <div class="ticket-detail-grid"> 
-                
-                <div class="grid-item item-left">
-                    <label class="field-label">Typ problému</label>
-                    <div class="static-box">HW</div>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Zariadenie</label>
-                    <input type="text" class="input-basic" name="db_zariadenie" value="Monitor" readonly>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Názov zariadenia</label>
-                    <input type="text" class="input-basic" name="db_nazov" value="PC Lenovo ThinkCentre" readonly>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Umiestnenie zariadenia</label>
-                    <input type="text" class="input-basic" name="db_umiestnenie" value="Kancl B3 m. č. 029" readonly>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Popis závady</label>
-                    <textarea class="input-textarea" name="db_popis" readonly>Nedá sa zapnúť.</textarea>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Priložený súbor (Zadávateľ)</label>
-                    <div class="static-box text-muted italic">
-                        monitor.jpeg
-                    </div>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Nahlásil zamestnanec</label>
-                    <input type="text" class="input-basic" value="Anna Pekná" readonly>
-                </div>
-
-                <div class="grid-item item-left form-row-split">
-                    <div class="split-half">
-                        <label class="field-label">Začiatok riešenia</label>
-                        <input type="text" class="input-basic text-muted" value="13.10.2025 14:40" readonly>
-                    </div>
-                    <div class="split-half">
-                        <label class="field-label">Normohodiny (Plán)</label>
-                        <input type="text" class="input-basic" value="0,25 NH" readonly>
-                    </div>
-                </div>
-
-                <div class="grid-item item-left">
-                    <label class="field-label">Predpokladaný čas</label>
-                    <input type="text" class="input-basic" value="13.10.2025 14:55" readonly>
-                </div>
-
-
-                <div class="grid-item image-area">
-                    <div class="image-frame">
-                         <img src="images/monitor.png" alt="Náhľad" class="image-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:var(--text-primary); font-weight:bold;\'>Bez náhľadu</span>'">
-                    </div>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Popis riešenia závady</label>
-                    <textarea class="input-textarea" name="riesenie_popis" readonly>Bola poškodená grafická karta v PC. Vymenená za novú. Test OK.</textarea>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Priložiť súbor (Výstup)</label>
-                    <div class="static-box">
-                         <a href="images/report.pdf" target="_blank" style="color: var(--text-link); text-decoration: underline;">servisny_protokol.pdf</a>
-                    </div>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Vyriešil zamestnanec</label>
-                    <input type="text" class="input-basic" name="riesitel_meno" value="Jaroslav Smutný" readonly>
-                </div>
-
-                <div class="grid-item item-right form-row-split">
-                    <div class="split-half">
-                        <label class="field-label">Koniec riešenia</label>
-                         <input type="text" class="input-basic text-muted" name="cas_koniec" value="13.10.2025 14:52" readonly>
-                    </div>
-                    <div class="split-half">
-                        <label class="field-label">Normohodiny (Reál)</label>
-                        <input type="text" class="input-basic text-green" name="nh_real" value="0.25 NH" readonly> 
-                    </div>
-                </div>
-
-                <div class="grid-item item-right">
-                    <label class="field-label">Stav po ukončení</label>
-                    <div class="static-box status-solved">
-                        Vyriešené
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </form>
-</section>
-
-<section id="section-add-sw" class="content-section page-centered-section">
+<section id="section-add-sw" class="content-section page-centered-section" aria-label="Pridanie SW">
 
     <form id="createSwForm" method="POST" action="/api/vytvorit-sw">
 
@@ -747,7 +639,7 @@
     </form>
 </section>
 
-<section id="section-add-hw" class="content-section page-centered-section">
+<section id="section-add-hw" class="content-section page-centered-section" aria-label="Pridanie HW">
 
     <form id="createHwForm" method="POST" action="/api/vytvorit-hw">
 
@@ -770,7 +662,8 @@
     </form>
 </section>
 
-<div id="section-all-tickets" class="content-section table-wrapper" style="display: block;">
+
+<section id="section-all-tickets" class="content-section table-wrapper" aria-label="Prehľad všetkých ticketov">
     <table class="custom-table table-tickets">
         <thead>
             <tr>
@@ -864,9 +757,9 @@
             </tr>
         </tbody>
     </table>
-</div>
+</section>
 
-<div id="section-open-tickets" class="content-section table-wrapper">
+<section id="section-open-tickets" class="content-section table-wrapper" aria-label="Otvorené tickety">
     <table class="custom-table table-open-tickets">
         <thead>
             <tr>
@@ -880,7 +773,7 @@
         </thead>
 
         <tbody>
-            <tr onclick="showSection('section-finish-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-finish-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–005</td>
                 <td data-label="Názov zariadenia">PC Dell OptiPlex 7080</td>
                 <td data-label="Problém">Poškodený disk</td>
@@ -888,7 +781,7 @@
                 <td data-label="Predpokladaný čas odstránenia">24.01.2025 14:00</td>
                 <td data-label="Stav" class="status-open">otvorený</td>
             </tr>
-            <tr onclick="showSection('section-finish-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-finish-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–006</td>
                 <td data-label="Názov zariadenia">Switch TP-Link SG1016D</td>
                 <td data-label="Problém">Vypadáva sieť</td>
@@ -896,7 +789,7 @@
                 <td data-label="Predpokladaný čas odstránenia">23.01.2025 16:00</td>
                 <td data-label="Stav" class="status-open">otvorený</td>
             </tr>
-            <tr onclick="showSection('section-finish-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-finish-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–008</td>
                 <td data-label="Názov zariadenia">Monitor Samsung S24R350</td>
                 <td data-label="Problém">Mihá obraz</td>
@@ -904,7 +797,7 @@
                 <td data-label="Predpokladaný čas odstránenia">24.01.2025 10:00</td>
                 <td data-label="Stav" class="status-open">otvorený</td>
             </tr>
-            <tr onclick="showSection('section-finish-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-finish-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–012</td>
                 <td data-label="Názov zariadenia">Klimatizácia Daikin</td>
                 <td data-label="Problém">Nechladí</td>
@@ -912,7 +805,7 @@
                 <td data-label="Predpokladaný čas odstránenia">25.01.2025 09:00</td>
                 <td data-label="Stav" class="status-open">otvorený</td>
             </tr>
-            <tr onclick="showSection('section-finish-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-finish-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–015</td>
                 <td data-label="Názov zariadenia">Server Backup Unit</td>
                 <td data-label="Problém">Chyba zálohovania</td>
@@ -920,7 +813,7 @@
                 <td data-label="Predpokladaný čas odstránenia">23.01.2025 22:00</td>
                 <td data-label="Stav" class="status-open">otvorený</td>
             </tr>
-            <tr onclick="showSection('section-finish-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-finish-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–018</td>
                 <td data-label="Názov zariadenia">Projektor Epson EB-2250</td>
                 <td data-label="Problém">Vypálená lampa</td>
@@ -928,7 +821,7 @@
                 <td data-label="Predpokladaný čas odstránenia">26.01.2025 08:30</td>
                 <td data-label="Stav" class="status-open">otvorený</td>
             </tr>
-            <tr onclick="showSection('section-finish-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-finish-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–021</td>
                 <td data-label="Názov zariadenia">VPN Gateway</td>
                 <td data-label="Problém">Pomalé pripojenie</td>
@@ -936,7 +829,7 @@
                 <td data-label="Predpokladaný čas odstránenia">23.01.2025 15:30</td>
                 <td data-label="Stav" class="status-open">otvorený</td>
             </tr>
-            <tr onclick="showSection('section-finish-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-finish-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–024</td>
                 <td data-label="Názov zariadenia">Tlačiareň Zebra ZT411</td>
                 <td data-label="Problém">Kalibrácia štítkov</td>
@@ -944,7 +837,7 @@
                 <td data-label="Predpokladaný čas odstránenia">24.01.2025 11:00</td>
                 <td data-label="Stav" class="status-open">otvorený</td>
             </tr>
-            <tr onclick="showSection('section-finish-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-finish-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–029</td>
                 <td data-label="Názov zariadenia">Kávovar Philips Saeco</td>
                 <td data-label="Problém">Zablokovaný mlynček</td>
@@ -952,7 +845,7 @@
                 <td data-label="Predpokladaný čas odstránenia">27.01.2025 07:00</td>
                 <td data-label="Stav" class="status-open">otvorený</td>
             </tr>
-            <tr onclick="showSection('section-finish-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-finish-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–033</td>
                 <td data-label="Názov zariadenia">Wifi AP Unifi U6</td>
                 <td data-label="Problém">Strata signálu</td>
@@ -962,9 +855,9 @@
             </tr>
         </tbody>
     </table>
-</div>
+</section>
 
-<div id="section-new-tickets" class="content-section table-wrapper">
+<section id="section-new-tickets" class="content-section table-wrapper" aria-label="Nové tickety">
     <table class="custom-table table-new-tickets">
         <thead>
             <tr>
@@ -977,7 +870,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr onclick="showSection('section-manage-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-manage-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–040</td>
                 <td data-label="Názov zariadenia">Skener Canon DR-C225</td>
                 <td data-label="Problém">Nekomunikuje s PC</td>
@@ -985,7 +878,7 @@
                 <td data-label="Predpokladaný čas odstránenia">24.01.2025 12:00</td>
                 <td data-label="Stav" class="status-new">nový</td>
             </tr>
-            <tr onclick="showSection('section-manage-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-manage-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–041</td>
                 <td data-label="Názov zariadenia">Notebook Dell Latitude 5520</td>
                 <td data-label="Problém">Nefunkčná klávesnica</td>
@@ -993,7 +886,7 @@
                 <td data-label="Predpokladaný čas odstránenia">25.01.2025 09:30</td>
                 <td data-label="Stav" class="status-new">nový</td>
             </tr>
-            <tr onclick="showSection('section-manage-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-manage-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–042</td>
                 <td data-label="Názov zariadenia">Monitor BenQ GL2480</td>
                 <td data-label="Problém">Rozbitý displej</td>
@@ -1001,7 +894,7 @@
                 <td data-label="Predpokladaný čas odstránenia">24.01.2025 15:00</td>
                 <td data-label="Stav" class="status-new">nový</td>
             </tr>
-            <tr onclick="showSection('section-manage-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-manage-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–043</td>
                 <td data-label="Názov zariadenia">PC HP ProDesk 400</td>
                 <td data-label="Problém">Modrá obrazovka (BSOD)</td>
@@ -1009,7 +902,7 @@
                 <td data-label="Predpokladaný čas odstránenia">24.01.2025 16:30</td>
                 <td data-label="Stav" class="status-new">nový</td>
             </tr>
-            <tr onclick="showSection('section-manage-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-manage-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–044</td>
                 <td data-label="Názov zariadenia">Tlačiareň Kyocera Ecosys</td>
                 <td data-label="Problém">Špiní papier</td>
@@ -1017,7 +910,7 @@
                 <td data-label="Predpokladaný čas odstránenia">25.01.2025 10:00</td>
                 <td data-label="Stav" class="status-new">nový</td>
             </tr>
-            <tr onclick="showSection('section-manage-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-manage-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–045</td>
                 <td data-label="Názov zariadenia">IP Telefón Cisco 7841</td>
                 <td data-label="Problém">Nejde vytočiť číslo</td>
@@ -1025,7 +918,7 @@
                 <td data-label="Predpokladaný čas odstránenia">24.01.2025 11:30</td>
                 <td data-label="Stav" class="status-new">nový</td>
             </tr>
-            <tr onclick="showSection('section-manage-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-manage-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–046</td>
                 <td data-label="Názov zariadenia">Tablet Samsung Galaxy Tab</td>
                 <td data-label="Problém">Nenabíja sa</td>
@@ -1033,7 +926,7 @@
                 <td data-label="Predpokladaný čas odstránenia">26.01.2025 08:00</td>
                 <td data-label="Stav" class="status-new">nový</td>
             </tr>
-            <tr onclick="showSection('section-manage-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-manage-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–047</td>
                 <td data-label="Názov zariadenia">Switch Cisco 2960</td>
                 <td data-label="Problém">Port 12 nefunkčný</td>
@@ -1041,7 +934,7 @@
                 <td data-label="Predpokladaný čas odstránenia">24.01.2025 14:15</td>
                 <td data-label="Stav" class="status-new">nový</td>
             </tr>
-            <tr onclick="showSection('section-manage-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-manage-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–048</td>
                 <td data-label="Názov zariadenia">Projektor Acer X118H</td>
                 <td data-label="Problém">Prehrieva sa</td>
@@ -1049,7 +942,7 @@
                 <td data-label="Predpokladaný čas odstránenia">25.01.2025 13:00</td>
                 <td data-label="Stav" class="status-new">nový</td>
             </tr>
-            <tr onclick="showSection('section-manage-ticket')" style="cursor: pointer;">
+            <tr onclick="showSection('section-manage-ticket')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–049</td>
                 <td data-label="Názov zariadenia">Dochádzkový terminál</td>
                 <td data-label="Problém">Nereaguje na čipy</td>
@@ -1059,10 +952,10 @@
             </tr>
         </tbody>
     </table>
-</div>
+</section>
 
 
-<div id="section-solved-tickets" class="content-section table-wrapper">
+<section id="section-solved-tickets" class="content-section table-wrapper" aria-label="Vyriešené tickety">
     <table class="custom-table table-solved-tickets">
         <thead>
             <tr>
@@ -1075,7 +968,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr onclick="showSection('section-solved-detail')" style="cursor: pointer;">
+            <tr onclick="showSection('section-solved-detail')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–040</td>
                 <td data-label="Názov zariadenia">Skener Canon DR-C225</td>
                 <td data-label="Problém">Nekomunikuje s PC</td>
@@ -1083,7 +976,7 @@
                 <td data-label="Čas odstránenia závady">24.01.2025 12:00</td>
                 <td data-label="Stav" class="status-solved">ukončený</td>
             </tr>
-            <tr onclick="showSection('section-solved-detail')" style="cursor: pointer;">
+            <tr onclick="showSection('section-solved-detail')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–041</td>
                 <td data-label="Názov zariadenia">Notebook Dell Latitude 5520</td>
                 <td data-label="Problém">Nefunkčná klávesnica</td>
@@ -1091,7 +984,7 @@
                 <td data-label="Čas odstránenia závady">25.01.2025 09:30</td>
                 <td data-label="Stav" class="status-solved">ukončený</td>
             </tr>
-            <tr onclick="showSection('section-solved-detail')" style="cursor: pointer;">
+            <tr onclick="showSection('section-solved-detail')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–042</td>
                 <td data-label="Názov zariadenia">Monitor BenQ GL2480</td>
                 <td data-label="Problém">Rozbitý displej</td>
@@ -1099,7 +992,7 @@
                 <td data-label="Čas odstránenia závady">24.01.2025 15:00</td>
                 <td data-label="Stav" class="status-solved">ukončený</td>
             </tr>
-            <tr onclick="showSection('section-solved-detail')" style="cursor: pointer;">
+            <tr onclick="showSection('section-solved-detail')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–043</td>
                 <td data-label="Názov zariadenia">PC HP ProDesk 400</td>
                 <td data-label="Problém">Modrá obrazovka (BSOD)</td>
@@ -1107,7 +1000,7 @@
                 <td data-label="Čas odstránenia závady">24.01.2025 16:30</td>
                 <td data-label="Stav" class="status-solved">ukončený</td>
             </tr>
-            <tr onclick="showSection('section-solved-detail')" style="cursor: pointer;">
+            <tr onclick="showSection('section-solved-detail')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–044</td>
                 <td data-label="Názov zariadenia">Tlačiareň Kyocera Ecosys</td>
                 <td data-label="Problém">Špiní papier</td>
@@ -1115,7 +1008,7 @@
                 <td data-label="Čas odstránenia závady">25.01.2025 10:00</td>
                 <td data-label="Stav" class="status-solved">ukončený</td>
             </tr>
-            <tr onclick="showSection('section-solved-detail')" style="cursor: pointer;">
+            <tr onclick="showSection('section-solved-detail')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–045</td>
                 <td data-label="Názov zariadenia">IP Telefón Cisco 7841</td>
                 <td data-label="Problém">Nejde vytočiť číslo</td>
@@ -1123,7 +1016,7 @@
                 <td data-label="Čas odstránenia závady">24.01.2025 11:30</td>
                 <td data-label="Stav" class="status-solved">ukončený</td>
             </tr>
-            <tr onclick="showSection('section-solved-detail')" style="cursor: pointer;">
+            <tr onclick="showSection('section-solved-detail')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–046</td>
                 <td data-label="Názov zariadenia">Tablet Samsung Galaxy Tab</td>
                 <td data-label="Problém">Nenabíja sa</td>
@@ -1131,7 +1024,7 @@
                 <td data-label="Čas odstránenia závady">26.01.2025 08:00</td>
                 <td data-label="Stav" class="status-solved">ukončený</td>
             </tr>
-            <tr onclick="showSection('section-solved-detail')" style="cursor: pointer;">
+            <tr onclick="showSection('section-solved-detail')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–047</td>
                 <td data-label="Názov zariadenia">Switch Cisco 2960</td>
                 <td data-label="Problém">Port 12 nefunkčný</td>
@@ -1139,7 +1032,7 @@
                 <td data-label="Čas odstránenia závady">24.01.2025 14:15</td>
                 <td data-label="Stav" class="status-solved">ukončený</td>
             </tr>
-            <tr onclick="showSection('section-solved-detail')" style="cursor: pointer;">
+            <tr onclick="showSection('section-solved-detail')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–048</td>
                 <td data-label="Názov zariadenia">Projektor Acer X118H</td>
                 <td data-label="Problém">Prehrieva sa</td>
@@ -1147,7 +1040,7 @@
                 <td data-label="Čas odstránenia závady">25.01.2025 13:00</td>
                 <td data-label="Stav" class="status-solved">ukončený</td>
             </tr>
-            <tr onclick="showSection('section-solved-detail')" style="cursor: pointer;">
+            <tr onclick="showSection('section-solved-detail')" class="cursor-pointer">
                 <td data-label="ID ticketu">TKT–2025–049</td>
                 <td data-label="Názov zariadenia">Dochádzkový terminál</td>
                 <td data-label="Problém">Nereaguje na čipy</td>
@@ -1157,10 +1050,9 @@
             </tr>
         </tbody>
     </table>
-</div>
+</section>
 
-
-<section id="section-all-users" class="content-section table-wrapper">
+<section id="section-all-users" class="content-section table-wrapper" aria-label="Zoznam užívateľov">
     <table class="custom-table table-users">
             <thead>
                 <tr>
@@ -1308,7 +1200,7 @@
 
 </section>
 
-<section id="section-all-records" class="content-section table-wrapper">
+<section id="section-all-records" class="content-section table-wrapper" aria-label="História záznamov">
 
     <table class="custom-table table-records">
         <thead>
@@ -1372,73 +1264,71 @@
 
 </section>
 
-<section id="section-all-hwsw-records" class="content-section table-wrapper">
+<section id="section-all-hwsw-records" class="content-section table-wrapper" aria-label="Záznamy HW a SW">
 
-    <table class="custom-table table-records">
-        <table class="custom-table table-hwsw-records">
-            <thead>
-                <tr>
-                    <th>Dátum a čas</th>
-                    <th>Záznam</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="Dátum a čas">24.10.2025, 14:33</td>
-                    <td data-label="Záznam">Bolo pridané zariadenie do kategórie HW – Tablet s predpokladaným časom riešenia závady 0,5 NH</td>
-                </tr>
+    <table class="custom-table table-hwsw-records">
+        <thead>
+            <tr>
+                <th>Dátum a čas</th>
+                <th>Záznam</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Dátum a čas">24.10.2025, 14:33</td>
+                <td data-label="Záznam">Bolo pridané zariadenie do kategórie HW – Tablet s predpokladaným časom riešenia závady 0,5 NH</td>
+            </tr>
 
-                <tr>
-                    <td data-label="Dátum a čas">24.10.2025, 13:11</td>
-                    <td data-label="Záznam">Pri SW vybavení OS Windows došlo k prepočtu normohodín – aktuálna hodnota 1,8 NH</td>
-                </tr>
+            <tr>
+                <td data-label="Dátum a čas">24.10.2025, 13:11</td>
+                <td data-label="Záznam">Pri SW vybavení OS Windows došlo k prepočtu normohodín – aktuálna hodnota 1,8 NH</td>
+            </tr>
 
-                <tr>
-                    <td data-label="Dátum a čas">24.10.2025, 12:45</td>
-                    <td data-label="Záznam">Bolo pridané vybavenie do kategórie SW – Komunikačné nástroje s predpokladaným časom riešenia závady 0,25 NH</td>
-                </tr>
+            <tr>
+                <td data-label="Dátum a čas">24.10.2025, 12:45</td>
+                <td data-label="Záznam">Bolo pridané vybavenie do kategórie SW – Komunikačné nástroje s predpokladaným časom riešenia závady 0,25 NH</td>
+            </tr>
 
-                <tr>
-                    <td data-label="Dátum a čas">24.10.2025, 10:26</td>
-                    <td data-label="Záznam">Pri HW zariadení Server došlo k prepočtu normohodín – aktuálna hodnota 3,2 NH</td>
-                </tr>
+            <tr>
+                <td data-label="Dátum a čas">24.10.2025, 10:26</td>
+                <td data-label="Záznam">Pri HW zariadení Server došlo k prepočtu normohodín – aktuálna hodnota 3,2 NH</td>
+            </tr>
 
-                <tr>
-                    <td data-label="Dátum a čas">24.10.2025, 09:55</td>
-                    <td data-label="Záznam">Pri HW zariadení Monitor došlo k úprave normohodín – aktuálna hodnota 0,6 NH</td>
-                </tr>
+            <tr>
+                <td data-label="Dátum a čas">24.10.2025, 09:55</td>
+                <td data-label="Záznam">Pri HW zariadení Monitor došlo k úprave normohodín – aktuálna hodnota 0,6 NH</td>
+            </tr>
 
-                <tr>
-                    <td data-label="Dátum a čas">24.10.2025, 08:10</td>
-                    <td data-label="Záznam">Bolo odstránené zariadenie HW – Ručný skener</td>
-                </tr>
+            <tr>
+                <td data-label="Dátum a čas">24.10.2025, 08:10</td>
+                <td data-label="Záznam">Bolo odstránené zariadenie HW – Ručný skener</td>
+            </tr>
 
-                <tr>
-                    <td data-label="Dátum a čas">23.10.2025, 16:45</td>
-                    <td data-label="Záznam">Bolo pridané zariadenie do kategórie HW – Dokovacia stanica s predpokladaným časom riešenia závady 0,3 NH</td>
-                </tr>
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 16:45</td>
+                <td data-label="Záznam">Bolo pridané zariadenie do kategórie HW – Dokovacia stanica s predpokladaným časom riešenia závady 0,3 NH</td>
+            </tr>
 
-                <tr>
-                    <td data-label="Dátum a čas">23.10.2025, 15:20</td>
-                    <td data-label="Záznam">Pri SW vybavení Antivírusový balík došlo k prepočtu normohodín – aktuálna hodnota 0,4 NH</td>
-                </tr>
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 15:20</td>
+                <td data-label="Záznam">Pri SW vybavení Antivírusový balík došlo k prepočtu normohodín – aktuálna hodnota 0,4 NH</td>
+            </tr>
 
-                <tr>
-                    <td data-label="Dátum a čas">23.10.2025, 14:00</td>
-                    <td data-label="Záznam">Bolo odstránené vybavenie SW – Starý účtovný systém v2 (End of Life)</td>
-                </tr>
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 14:00</td>
+                <td data-label="Záznam">Bolo odstránené vybavenie SW – Starý účtovný systém v2 (End of Life)</td>
+            </tr>
 
-                <tr>
-                    <td data-label="Dátum a čas">23.10.2025, 11:30</td>
-                    <td data-label="Záznam">Pri HW zariadení Projektor Epson došlo k úprave popisu kategórie.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            <tr>
+                <td data-label="Dátum a čas">23.10.2025, 11:30</td>
+                <td data-label="Záznam">Pri HW zariadení Projektor Epson došlo k úprave popisu kategórie.</td>
+            </tr>
+        </tbody>
+    </table>
 
 </section>
 
-<section id="section-sw-management" class="content-section table-wrapper">
+<section id="section-sw-management" class="content-section table-wrapper" aria-label="Zoznam SW vybavenia">
     <table class="custom-table table-sw-management">
         <thead>
             <tr>
@@ -1604,7 +1494,7 @@
     </table>
 </section>
 
-<section id="section-hw-management" class="content-section table-wrapper">
+<section id="section-hw-management" class="content-section table-wrapper" aria-label="Zoznam HW vybavenia">
     <table class="custom-table table-hw-management">
         <thead>
             <tr>
@@ -1770,10 +1660,11 @@
     </table>
 </section>
 
-<script src="script.js"></script>
-</body>
+</main>
 
+<script src="script.js"></script>
 <footer> 
 </footer>
+</body>
 
 </html>
