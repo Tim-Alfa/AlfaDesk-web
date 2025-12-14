@@ -1,4 +1,7 @@
 /* --- 1. Globálne nastavenia a premenné --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
 :root {
   /* Farby - Základné */
   --white: #ffffff;
@@ -6,7 +9,7 @@
   --text-primary: #322c23;
   --text-secondary: #858586;
   --text-nav: #004aad;
-  --text-link: #0056b3; /* Doplnená chýbajúca premenná pre odkazy */
+  --text-link: #0056b3;
   
   /* Pozadia */
   --bg-nav: #38b6ff;
@@ -18,7 +21,7 @@
   --status-open: #fcbd27;
   --status-solved: #fa4b73;
   --status-text-green: #00bf63;
-  --color-danger: #ff0000; /* Pre notifikačné odznaky */
+  --color-danger: #ff0000;
 
   /* Farby modulov */
   --module-calendar: #9fa0a2;
@@ -116,7 +119,7 @@ a {
   margin: 1rem;   
   padding: 1rem;
   display: flex;
-  flex-direction: column; /* Mobile first */
+  flex-direction: column;
   gap: 0.5rem;
 }
 
@@ -232,7 +235,7 @@ a {
   align-items: center;
   box-sizing: border-box;
   min-height: 160px;
-  width: 100%; /* Mobile first */
+  width: 100%;
   min-width: 250px;
   padding: 1.5rem;
   border-radius: 0.75rem;
@@ -795,7 +798,329 @@ a {
   transform: scale(0.98);
 }
 
-/* --- 8. Pätička --- */
+/* --- 8. Pracovný Kalendár (Timeline) --- */
+.calendar-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.calendar-control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calendar-date-select {
+  background-color: var(--bg-input);
+  padding: 8px 30px 8px 15px;
+  border-radius: 6px;
+  font-weight: 600;
+  min-width: 220px;
+  cursor: pointer;
+}
+
+.calendar-action-btn {
+  margin: 0 !important;
+  background-color: var(--module-calendar);
+  color: var(--white);
+  font-size: 0.9rem;
+  padding: 8px 16px;
+}
+
+.calendar-action-btn:hover {
+  background-color: var(--text-secondary);
+}
+
+/* Wrapper */
+.calendar-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Hlavička */
+.calendar-header {
+  display: flex;
+  background-color: var(--module-calendar);
+  color: var(--white);
+  font-weight: 600;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.header-cell {
+  padding: 12px 5px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.3);
+  font-size: 0.95rem;
+}
+
+.header-cell:last-child {
+  border-right: none;
+}
+
+.day-col {
+  width: 120px;
+  flex-shrink: 0;
+  background-color: #8c8d8f;
+}
+
+.time-col {
+  flex-grow: 1;
+  width: 10%; /* 1 hodina = 10% */
+}
+
+.calendar-row {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  min-height: 60px;
+}
+
+.calendar-row:last-child {
+  border-bottom: none;
+}
+
+.day-label {
+  width: 120px;
+  flex-shrink: 0;
+  background-color: var(--bg-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-right: 1px solid #d1d1d1;
+  color: var(--text-primary);
+}
+
+/* Časová os */
+.timeline-track {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  background-image: repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent calc(10% - 1px),
+      #e0e0e0 calc(10% - 1px),
+      #e0e0e0 10%
+  );
+}
+
+/* Tickety - Základ */
+.ticket-bar {
+  height: 40px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: transform 0.2s, filter 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+  margin-right: 1px;
+}
+
+.ticket-bar:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+  z-index: 10;
+}
+
+/* Špeciálna trieda pre malé tickety (napr. 30 minút) */
+.ticket-compact {
+  padding: 0 2px;
+  font-size: 0.7rem;
+}
+
+.ticket-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Farby */
+.ticket-bar.status-new { background-color: var(--status-new); }
+.ticket-bar.status-open { background-color: var(--status-open); }
+.ticket-bar.status-solved { background-color: var(--status-solved); }
+
+.ticket-time-mobile {
+  display: none;
+}
+
+/* --- Pomocné triedy pre Grid ---*/
+/* Šírky (1h = 10%) */
+.grid-w-05 { width: 5%; }
+.grid-w-10 { width: 10%; }
+.grid-w-15 { width: 15%; }
+.grid-w-20 { width: 20%; }
+
+/* Marginy (Odsadenie) */
+.grid-ml-10 { margin-left: 10%; }
+.grid-ml-35 { margin-left: 35%; }
+
+
+/* --- Responsivita Kalendára (Mobil) --- */
+@media (max-width: 992px) {
+  .calendar-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .calendar-date-select {
+    width: 100%;
+  }
+  
+  .calendar-header {
+    display: none;
+  }
+
+  .calendar-wrapper {
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .calendar-row {
+    flex-direction: column;
+    background-color: transparent;
+    margin-bottom: 2rem;
+    border: none;
+    box-shadow: none;
+    min-height: auto;
+  }
+
+  .day-label {
+    width: 100%;
+    background-color: var(--module-calendar);
+    color: var(--white);
+    justify-content: center;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 0.5rem;
+    border-right: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .timeline-track {
+    flex-direction: column;
+    background-image: none;
+    padding: 0;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .ticket-bar {
+    /* Reset grid hodnôt */
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    height: auto;
+    
+    /* Reset pre .ticket-compact*/
+    padding: 12px 15px !important;
+    font-size: 0.9rem !important;
+    
+    justify-content: space-between;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .ticket-time-mobile {
+    display: inline-block;
+    font-weight: 500;
+    opacity: 0.9;
+    font-size: 0.85rem;
+    text-align: right;
+  }
+}
+
+/* --- 9. Pagination (Stránkovanie) --- */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background-color: var(--white);
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ddd; /* Generická šedá */
+  border-radius: 6px;
+  background-color: var(--white);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover {
+  background-color: var(--bg-input-hover);
+  border-color: #ccc;
+}
+
+.pagination-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.pagination-input {
+  width: 40px;
+  height: 32px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Úprava pre mobil */
+@media (max-width: 600px) {
+  .pagination-container {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+/* --- 10. Pätička --- */
 footer {
   height: 20px;
 }

@@ -68,7 +68,7 @@
       </div>
     </a>
 
-    <a href="javascript:void(0)" class="tile-container module-calendar" onclick="showSection('section-calendar-sub-dashboard')">
+    <a href="javascript:void(0)" class="tile-container module-calendar" onclick="showSection('section-calendar-sub-dashboard', 'section-calendar-detail')">
       <div class="tile-content-text">
         Pracovný kalendár
       </div>
@@ -202,7 +202,7 @@
 <section id="section-calendar-sub-dashboard" class="content-section section-ticket-sub-dashboard" aria-label="Podpanel kalendár">
   <div class="tiles-grid">
 
-    <a href="javascript:void(0)" class="tile-container module-calendar" onclick="showSection('section-calendar-sub-dashboard')">
+    <a href="javascript:void(0)" class="tile-container module-calendar" onclick="showSection('section-calendar-sub-dashboard', 'section-calendar-detail')">
       <div class="tile-content-text">
         Pracovný kalendár
       </div>
@@ -1658,6 +1658,115 @@
             </tr>
         </tbody>
     </table>
+</section>
+
+<section id="section-calendar-detail" class="content-section page-centered-section">
+    
+    <div class="calendar-controls">
+        <div class="calendar-control-group">
+            <label class="field-label d-inline">Zobraziť týždeň:</label>
+            <div class="select-wrapper d-inline" style="width: auto;">
+                <select class="input-select calendar-date-select">
+                    <option>13.10.2025 - 19.10.2025</option>
+                    <option>20.10.2025 - 26.10.2025</option>
+                </select>
+            </div>
+        </div>
+        <button class="submit-btn calendar-action-btn">Upraviť pracovný týždeň</button>
+    </div>
+
+    <div class="calendar-wrapper">
+        
+        <div class="calendar-header">
+            <div class="header-cell day-col">Deň</div>
+            <div class="header-cell time-col">06:00</div>
+            <div class="header-cell time-col">07:00</div>
+            <div class="header-cell time-col">08:00</div>
+            <div class="header-cell time-col">09:00</div>
+            <div class="header-cell time-col">10:00</div>
+            <div class="header-cell time-col">11:00</div>
+            <div class="header-cell time-col">12:00</div>
+            <div class="header-cell time-col">13:00</div>
+            <div class="header-cell time-col">14:00</div>
+            <div class="header-cell time-col">15:00</div>
+        </div>
+
+        <div class="calendar-body">
+
+            <div class="calendar-row">
+                <div class="day-label">Pondelok</div>
+                <div class="timeline-track">
+                    <div class="ticket-bar status-solved grid-ml-10 grid-w-20" 
+                         onclick="showSection('section-solved-detail')">
+                        <span class="ticket-text">TKT-2025-020</span>
+                        <span class="ticket-time-mobile">07:00 - 09:00</span>
+                    </div>
+
+                    <div class="ticket-bar status-solved grid-w-10"
+                         onclick="showSection('section-solved-detail')">
+                        <span class="ticket-text">TKT-2025-021</span>
+                        <span class="ticket-time-mobile">09:00 - 10:00</span>
+                    </div>
+
+                    <div class="ticket-bar status-solved grid-ml-35 grid-w-20"
+                         onclick="showSection('section-solved-detail')">
+                        <span class="ticket-text">TKT-2025-023</span>
+                        <span class="ticket-time-mobile">13:30 - 15:30</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-row">
+                <div class="day-label">Utorok</div>
+                <div class="timeline-track">
+                    
+                    <div class="ticket-bar status-solved grid-ml-10 grid-w-10"
+                         onclick="showSection('section-solved-detail')">
+                        <span class="ticket-text">TKT-2025-023</span>
+                        <span class="ticket-time-mobile">07:00 - 08:00</span>
+                    </div>
+
+                    <div class="ticket-bar status-open grid-w-20"
+                         onclick="showSection('section-finish-ticket')">
+                        <span class="ticket-text">TKT-2025-024</span>
+                        <span class="ticket-time-mobile">08:00 - 10:00</span>
+                    </div>
+
+                    <div class="ticket-bar status-new grid-w-05 ticket-compact"
+                         onclick="showSection('section-manage-ticket')">
+                        <span class="ticket-text">TKT-2025-025</span>
+                         <span class="ticket-time-mobile">10:00 - 10:30</span>
+                    </div>
+
+                    <div class="ticket-bar status-new grid-w-15"
+                         onclick="showSection('section-manage-ticket')">
+                        <span class="ticket-text">TKT-2025-026</span>
+                         <span class="ticket-time-mobile">10:30 - 12:00</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="calendar-row">
+                <div class="day-label">Streda</div>
+                <div class="timeline-track">
+                </div>
+            </div>
+
+            <div class="calendar-row">
+                <div class="day-label">Štvrtok</div>
+                <div class="timeline-track">
+                </div>
+            </div>
+
+            <div class="calendar-row">
+                <div class="day-label">Piatok</div>
+                <div class="timeline-track">
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
 </main>
